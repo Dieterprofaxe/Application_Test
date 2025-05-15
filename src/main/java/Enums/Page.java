@@ -1,7 +1,8 @@
 package Enums;
 
 public enum Page {
-	MAIN("/Layout/MainPage.fxml");
+	MAIN("/Layout/MainPage.fxml"),
+	FIRST("/Layout/FirstPage.fxml");
 	
 	private String filename;
 	

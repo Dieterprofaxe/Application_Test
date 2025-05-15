@@ -4,6 +4,8 @@ package Controller;
 
 import javax.swing.JOptionPane;
 
+import Enums.Page;
+import PageSwitching.PageSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,7 +46,7 @@ public class MainPageController extends Application {
 		
 		
 		if(pass == 1234 && user.equals("root")){
-			JOptionPane.showMessageDialog(null, "Richtiger Benutzer oder Passwort");
+			PageSwitcher.switchTo(Page.FIRST);
 		}else {
 			JOptionPane.showMessageDialog(null, "Falscher Benutzer oder Passwort");
 		}

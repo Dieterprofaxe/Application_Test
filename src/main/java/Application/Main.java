@@ -14,7 +14,7 @@ public class Main extends Application {
 		
 		Scene scene = new Scene(new Pane());
 		PageSwitcher.setScene(scene);
-		PageSwitcher.switchTo(Page.MAIN);
+		PageSwitcher.switchTo(Page.FIRST);
 		
 		stage.setTitle("Essen Application");
 		stage.setScene(scene);
