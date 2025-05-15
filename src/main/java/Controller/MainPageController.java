@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.PasswordField;
 
 public class MainPageController extends Application {
 	
@@ -16,7 +17,10 @@ public class MainPageController extends Application {
 	private Button btn_loe, btn_enter, btn_close;
 	
 	@FXML
-	private TextField txt_user, txt_pass;
+	private TextField txt_user;
+	
+	@FXML 
+	private PasswordField txt_pass;
 	
 	
 	
@@ -50,15 +54,6 @@ public class MainPageController extends Application {
 				
 				
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,7 +13,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Label">
+            <Label text="Fressen">
                <font>
                   <Font size="33.0" />
                </font>
@@ -32,7 +33,7 @@
                   <Insets left="150.0" top="30.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="txt_user" >
+            <TextField fx:id="txt_user">
                <HBox.margin>
                   <Insets left="50.0" top="30.0" />
                </HBox.margin>
@@ -49,11 +50,11 @@
                   <Insets left="150.0" top="30.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="txt_pass">
+            <PasswordField fx:id="txt_pass">
                <HBox.margin>
                   <Insets left="100.0" top="30.0" />
                </HBox.margin>
-            </TextField>
+            </PasswordField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -63,12 +64,12 @@
                   <Insets left="150.0" top="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btn_close" onAction="#close" mnemonicParsing="false" prefHeight="45.0" prefWidth="71.0" text="Schließen">
+            <Button fx:id="btn_close" mnemonicParsing="false" onAction="#close" prefHeight="45.0" prefWidth="71.0" text="Schließen">
                <HBox.margin>
                   <Insets left="90.0" top="30.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btn_enter" onAction="#check_user" mnemonicParsing="false" prefHeight="45.0" prefWidth="71.0" text="Eingabe">
+            <Button fx:id="btn_enter" mnemonicParsing="false" onAction="#check_user" prefHeight="45.0" prefWidth="71.0" text="Eingabe">
                <HBox.margin>
                   <Insets left="90.0" top="30.0" />
                </HBox.margin>
