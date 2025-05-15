@@ -7,6 +7,7 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 
+
 public class Main extends Application {
 	
 	public void start(Stage stage) throws Exception{

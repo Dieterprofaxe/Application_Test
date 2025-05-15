@@ -1,5 +1,6 @@
 package PageSwitching;
 
+
 import Enums.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

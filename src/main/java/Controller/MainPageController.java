@@ -24,6 +24,7 @@ public class MainPageController extends Application {
 	public void delet() {
 		txt_user.setText("");
 		txt_pass.setText("");
+		
 	}
 	
 	@FXML

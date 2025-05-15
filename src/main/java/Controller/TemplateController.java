@@ -9,4 +9,6 @@ public abstract class TemplateController {
 	 protected void onMenu() {
 		 PageSwitcher.switchTo(Page.MAIN);
 	 }
+	 
+	 
 }

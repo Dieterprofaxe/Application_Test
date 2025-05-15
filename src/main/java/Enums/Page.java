@@ -9,6 +9,7 @@ public enum Page {
 		this.filename = filename;
 	}
 	
+	
 	public String getFilename() {
 		return filename;
 	}
