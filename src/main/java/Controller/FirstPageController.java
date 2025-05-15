@@ -11,7 +11,7 @@ import javafx.scene.control.PasswordField;
 public class FirstPageController {
 	
 	@FXML
-	private Button btn_logOut;
+	private Button btn_close, btn_logOut;
 	
 	
 	
@@ -19,6 +19,10 @@ public class FirstPageController {
 	
 	public void logOut() {
 		PageSwitcher.switchTo(Page.MAIN);
+	}
+	
+	public void close() {
+		System.exit(0);
 	}
 	
 	
