@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.NewPageController"
+            stylesheets="@../Stylesheet/NewPage.css"
+            prefWidth="1194.0" prefHeight="834.0">
+
+    <VBox spacing="30" alignment="TOP_LEFT"
+          AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40"
+          AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+
+        <Label text="Neues Gericht anlegen" styleClass="heading"/>
+
+        <GridPane hgap="25" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints minWidth="180"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="nameField" promptText="Name des Gerichts"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Dauer (Minuten):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="durationField" promptText="z. B. 30"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Zutaten:" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="TOP_LEFT"/>
+            <TextArea fx:id="ingredientsArea" promptText="Zutatenliste hier eingeben"
+                      wrapText="true" prefRowCount="10"
+                      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Zubereitung:" GridPane.rowIndex="3" GridPane.columnIndex="0" alignment="TOP_LEFT"/>
+            <TextArea fx:id="preparationArea" promptText="Zubereitungsschritte hier eingeben"
+                      wrapText="true" prefRowCount="15"
+                      GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox spacing="20" alignment="CENTER_RIGHT">
+            <Button text="Abbrechen" fx:id="cancelButton" styleClass="cancel-button" onAction="#close"/>
+            <Button text="Speichern" fx:id="saveButton" defaultButton="true" styleClass="save-button"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

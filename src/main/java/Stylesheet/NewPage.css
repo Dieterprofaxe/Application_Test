@@ -1,0 +1,49 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f9f9f9;
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.heading {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.text-field, .text-area, .combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+.text-area {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 20 8 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.save-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+}
+
+.cancel-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-opacity: 0.85;
+}
