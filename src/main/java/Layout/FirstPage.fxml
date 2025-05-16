@@ -9,44 +9,46 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="856.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FirstPageController">
-   <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="btn_logOut" mnemonicParsing="false" onAction="#logOut" prefHeight="51.0" prefWidth="52.0">
-               <HBox.margin>
-                  <Insets left="50.0" top="20.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Picture/SignOut.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="38.0" prefWidth="210.0" text="Essen Übersicht">
-               <font>
-                  <Font size="26.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="340.0" top="30.0" />
-               </HBox.margin>
-            </Label>
-            <Button fx:id="btn_close" mnemonicParsing="false" prefHeight="51.0" prefWidth="52.0">
-               <HBox.margin>
-                  <Insets left="450.0" top="20.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" onAction="#close">
-                     <image>
-                        <Image url="@../Picture/close.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
-      <HBox prefHeight="399.0" prefWidth="1210.0" />
-   </children>
+<VBox fx:id="mainContainer" alignment="TOP_CENTER" prefHeight="834.0" prefWidth="1194.0" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FirstPageController" stylesheets="@../Stylesheet/FirstPage.css">
+   <padding>
+      <Insets top="30" bottom="30" left="50" right="50"/>
+   </padding>
+
+   <!-- Top Bar -->
+   <HBox alignment="CENTER" spacing="20">
+      <Button fx:id="btn_logOut" onAction="#logOut" styleClass="icon-button">
+         <graphic>
+            <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/SignOut.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+
+      <Label text="Essen Übersicht" styleClass="title-label" />
+
+      <Button fx:id="btn_close" onAction="#close" styleClass="icon-button">
+         <graphic>
+            <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/close.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </HBox>
+
+   <!-- Card Layout -->
+   <HBox alignment="CENTER" spacing="40">
+      <VBox fx:id="vbox_first" styleClass="card">
+         <Label text="Neues Gericht anlegen" styleClass="card-title"/>
+      </VBox>
+      <VBox fx:id="vbox_second" styleClass="card">
+         <Label text="Alle Gerichte anlegen" styleClass="card-title"/>
+      </VBox>
+      <VBox fx:id="vbox_third" styleClass="card">
+         <Label text="Gericht bearbeiten" styleClass="card-title"/>
+      </VBox>
+   </HBox>
 </VBox>

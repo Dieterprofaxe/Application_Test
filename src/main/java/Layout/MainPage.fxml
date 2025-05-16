@@ -1,80 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainPageController">
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="Controller.MainPageController"
+           prefHeight="834.0" prefWidth="1194.0"
+           styleClass="main-background"
+           stylesheets="@../Stylesheet/MainPage.css">
+
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <VBox alignment="CENTER" spacing="30.0" styleClass="card-container">
          <children>
-            <Label text="Fressen">
-               <font>
-                  <Font size="33.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="250.0" top="20.0" />
-               </HBox.margin>
-            </Label>
+            <!-- Title -->
+            <Label text="Fressen" styleClass="main-title"/>
+
+            <!-- Form -->
+            <VBox spacing="20.0" alignment="CENTER_LEFT" styleClass="form-group">
+               <!-- Benutzername -->
+               <VBox spacing="8.0">
+                  <Label text="Benutzername" styleClass="form-label"/>
+                  <TextField fx:id="txt_user" promptText="Benutzername eingeben" styleClass="form-input"/>
+               </VBox>
+
+               <!-- Passwort -->
+               <VBox spacing="8.0">
+                  <Label text="Passwort" styleClass="form-label"/>
+                  <PasswordField fx:id="txt_pass" promptText="Passwort eingeben" styleClass="form-input"/>
+               </VBox>
+            </VBox>
+
+            <!-- Buttons -->
+            <HBox spacing="20.0" alignment="CENTER">
+               <Button fx:id="btn_loe" onAction="#delet" text="Löschen" styleClass="button-secondary"/>
+               <Button fx:id="btn_close" onAction="#close" text="Schließen" styleClass="button-secondary"/>
+               <Button fx:id="btn_enter" onAction="#check_user" text="Eingabe" styleClass="button-primary"/>
+            </HBox>
          </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Benutzername">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="150.0" top="30.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="txt_user">
-               <HBox.margin>
-                  <Insets left="50.0" top="30.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Passwort">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="150.0" top="30.0" />
-               </HBox.margin>
-            </Label>
-            <PasswordField fx:id="txt_pass">
-               <HBox.margin>
-                  <Insets left="100.0" top="30.0" />
-               </HBox.margin>
-            </PasswordField>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="btn_loe" mnemonicParsing="false" onAction="#delet" prefHeight="45.0" prefWidth="71.0" text="Löschen">
-               <HBox.margin>
-                  <Insets left="150.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btn_close" mnemonicParsing="false" onAction="#close" prefHeight="45.0" prefWidth="71.0" text="Schließen">
-               <HBox.margin>
-                  <Insets left="90.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="btn_enter" mnemonicParsing="false" onAction="#check_user" prefHeight="45.0" prefWidth="71.0" text="Eingabe">
-               <HBox.margin>
-                  <Insets left="90.0" top="30.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
+      </VBox>
    </children>
-</VBox>
+</StackPane>

@@ -1,0 +1,66 @@
+.main-background {
+    -fx-background-color: linear-gradient(to bottom, #f0f3f7, #dce3ea);
+}
+
+.card-container {
+    -fx-padding: 40;
+    -fx-background-color: white;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 8);
+    -fx-spacing: 30;
+    -fx-min-width: 400px;
+    -fx-max-width: 450px;
+}
+
+.main-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.form-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #34495e;
+}
+
+.form-input {
+    -fx-pref-height: 36px;
+    -fx-pref-width: 100%;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccc;
+    -fx-padding: 0 12 0 12;
+}
+
+.form-input:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+}
+
+.button-primary {
+    -fx-font-size: 14px;
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button-secondary {
+    -fx-font-size: 14px;
+    -fx-background-color: #bdc3c7;
+    -fx-text-fill: white;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #95a5a6;
+}
