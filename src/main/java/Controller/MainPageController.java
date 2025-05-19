@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 
+
 public class MainPageController extends Application {
 	
 	@FXML
@@ -26,13 +27,13 @@ public class MainPageController extends Application {
 	
 	
 	private final String user1 = "admin";
-    private final String pass1 = "admin123";
+    private final String pass1 = "1234";
 
     private final String user2 = "user";
-    private final String pass2 = "user123";
+    private final String pass2 = "1234";
 
     private final String user3 = "guest";
-    private final String pass3 = "guest123";
+    private final String pass3 = "1234";
 	
 	
 	
@@ -55,13 +56,16 @@ public class MainPageController extends Application {
 
         if (username.equals(user1) && password.equals(pass1)) {
             JOptionPane.showMessageDialog(null, "Willkommen Admin!");
-            // Hier kannst du zum Admin-Bereich weiterleiten
+            PageSwitcher.switchTo(Page.FIRST);
+            
         } else if (username.equals(user2) && password.equals(pass2)) {
             JOptionPane.showMessageDialog(null, "Willkommen User!");
-            // Hier kannst du zum User-Bereich weiterleiten
+            PageSwitcher.switchTo(Page.FIRST);
+            
         } else if (username.equals(user3) && password.equals(pass3)) {
             JOptionPane.showMessageDialog(null, "Willkommen Gast!");
-            // Hier kannst du zum Gast-Bereich weiterleiten
+            PageSwitcher.switchTo(Page.FIRST);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Benutzername oder Passwort falsch!", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
