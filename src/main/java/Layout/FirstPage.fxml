@@ -44,7 +44,7 @@
       <VBox fx:id="vbox_first" styleClass="card" onMouseClicked="#new_" >
          <Label text="Neues Gericht anlegen" styleClass="card-title"/>
       </VBox>
-      <VBox fx:id="vbox_second" styleClass="card">
+      <VBox fx:id="vbox_second" styleClass="card" onMouseClicked="#view" >
          <Label text="Alle Gerichte anzeigen" styleClass="card-title"/>
       </VBox>
       <VBox fx:id="vbox_third" styleClass="card">

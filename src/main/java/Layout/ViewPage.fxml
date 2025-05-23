@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.NewPageController"
+            stylesheets="@../Stylesheet/ViewPage.css"
+            prefWidth="1194.0" prefHeight="834.0">
+
+    <VBox spacing="30" alignment="TOP_LEFT"
+          AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40"
+          AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+
+        <!-- Überschrift -->
+        <Label text="Alle Gerichte" styleClass="heading"/>
+
+        <!-- Scrollbare Kartenansicht -->
+<ScrollPane fitToWidth="true" prefHeight="700">
+    <FlowPane fx:id="dishContainer" vgap="20" hgap="20" prefWrapLength="1000">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+    </FlowPane>
+</ScrollPane>
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Zurück" fx:id="backButton" styleClass="cancel-button"/>
+        </HBox>
+    </VBox>
+</AnchorPane>
