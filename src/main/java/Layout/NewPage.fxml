@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,82 +12,90 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/NewPage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPageController">
+<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/NewPage.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.NewPageController">
 
-    <VBox alignment="TOP_LEFT" spacing="30" AnchorPane.bottomAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
-        
+    <!-- Hauptlayout -->
+    <VBox spacing="20" AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+
+        <!-- Überschrift -->
         <Label styleClass="heading" text="Neues Gericht anlegen" />
-        
-        <GridPane hgap="25" vgap="20">
-            <columnConstraints>
-                <ColumnConstraints minWidth="180" />
-                <ColumnConstraints hgrow="ALWAYS" />
-            </columnConstraints>
-            
-            <!-- Name -->
-            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField fx:id="nameField" promptText="Name des Gerichts" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            
-            <!-- Dauer -->
-            <Label text="Dauer (Minuten):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField fx:id="durationField" promptText="z. B. 30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            
-            <!-- Zutaten nebeneinander -->
-            <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <HBox spacing="40" GridPane.columnIndex="1" GridPane.rowIndex="2">
 
-                <!-- Hauptzutaten -->
-                <VBox spacing="10">
-                    <Label text="Zutaten:" />
-                    <VBox fx:id="hauptzutatenList" spacing="5">
-                        <HBox spacing="5">
-                            <TextField prefWidth="150" promptText="Zutat" />
-                            <TextField prefWidth="150" promptText="Einheit" />
-                        </HBox>
-                    </VBox>
-                    <HBox spacing="10">
-                        <Button onAction="#addHauptzutatRow" text="+" />
-                        <Button onAction="#deleteHauptzutatRow" text="-" />
+        <!-- Scrollbarer Inhalt -->
+        <ScrollPane fitToWidth="true" prefHeight="600">
+            <VBox spacing="30">
+                <GridPane hgap="25" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="180" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <!-- Name -->
+                    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="nameField" promptText="Name des Gerichts" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <!-- Dauer -->
+                    <Label text="Dauer (Minuten):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="durationField" promptText="z. B. 30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <!-- Zutatenbereich -->
+                    <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <HBox spacing="40" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
+                        <!-- Hauptzutaten -->
+                        <VBox spacing="10">
+                            <Label text="Zutaten:" />
+                            <VBox fx:id="hauptzutatenList" spacing="5">
+                                <HBox spacing="5">
+                                    <TextField prefWidth="150" promptText="Zutat" />
+                                    <TextField prefWidth="150" promptText="Einheit" />
+                                </HBox>
+                            </VBox>
+                            <HBox spacing="10">
+                                <Button onAction="#addHauptzutatRow" text="+" />
+                                <Button onAction="#deleteHauptzutatRow" text="-" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- Zusatzzutaten -->
+                        <VBox spacing="10">
+                            <Label text="Weitere Zutaten:" />
+                            <VBox fx:id="zusatzzutatenList" spacing="5">
+                                <HBox spacing="5">
+                                    <TextField prefWidth="150" promptText="Zutat" />
+                                    <TextField prefWidth="150" promptText="Einheit" />
+                                </HBox>
+                            </VBox>
+                            <HBox spacing="10">
+                                <Button onAction="#addZusatzzutatRow" text="+" />
+                                <Button onAction="#deleteZusatzzutatRow" text="-" />
+                            </HBox>
+                        </VBox>
+
                     </HBox>
-                </VBox>
 
-                <!-- Gewürze & Weitere Zutaten -->
-                <VBox spacing="10">
-                    <Label text="Weitere Zutaten:" />
-                    <VBox fx:id="zusatzzutatenList" spacing="5">
-                        <HBox spacing="5">
-                            <TextField prefWidth="150" promptText="Zutat" />
-                            <TextField prefWidth="150" promptText="Einheit" />
-                        </HBox>
-                    </VBox>
-                    <HBox spacing="10">
-                        <Button onAction="#addZusatzzutatRow" text="+" />
-                        <Button onAction="#deleteZusatzzutatRow" text="-" />
-                    </HBox>
-                </VBox>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+            </VBox>
+        </ScrollPane>
 
-            </HBox>
-            
-            <rowConstraints>
-                <RowConstraints />
-                <RowConstraints />
-                <RowConstraints />
-                <RowConstraints />
-            </rowConstraints>
-        </GridPane>
-
-        <!-- Footer Buttons -->
+        <!-- Footer Buttons (bleiben fixiert unten) -->
         <HBox alignment="CENTER_RIGHT" spacing="20">
-         <Button mnemonicParsing="false" text="Nächste Seite">
-            <HBox.margin>
-               <Insets right="540.0" />
-            </HBox.margin>
-         </Button>
+            <Button mnemonicParsing="false" text="Nächste Seite" onAction="#next">
+                <HBox.margin>
+                    <Insets right="540.0" />
+                </HBox.margin>
+            </Button>
             <Button fx:id="cancelButton" onAction="#close" styleClass="cancel-button" text="Abbrechen" />
             <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" />
-         <VBox.margin>
-            <Insets top="360.0" />
-         </VBox.margin>
         </HBox>
+
     </VBox>
 </AnchorPane>

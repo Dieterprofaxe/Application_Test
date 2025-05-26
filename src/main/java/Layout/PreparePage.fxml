@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/PreparePage.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.PreparePageController">
+   <children>
+      <VBox alignment="TOP_LEFT" spacing="30.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40"
+            AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
+         <children>
+            <Label styleClass="heading" text="Zubereitung des Gerichtes" />
+
+            <VBox spacing="10">
+               <Label text="Zubereitung:" />
+               
+               <!-- Container für dynamische Felder -->
+               <VBox fx:id="stepsContainer" spacing="10">
+                  <TextField promptText="Zubereitungsschritt 1" styleClass="text-field" />
+               </VBox>
+
+               <HBox spacing="10">
+                  <Button fx:id="add" text="+" onAction="#addRow" />
+                  <Button fx:id="delete" text="-" onAction="#removeRow" />
+               </HBox>
+            </VBox>
+
+            <HBox alignment="CENTER_RIGHT" spacing="20">
+               <children>
+                  <Button fx:id="btn_last" mnemonicParsing="false" text="Vorherige Seite" onAction="#close">
+                     <HBox.margin>
+                        <Insets right="540.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btn_cancel" styleClass="cancel-button" text="Abbrechen" />
+                  <Button fx:id="btn_save" defaultButton="true" styleClass="save-button" text="Speichern" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

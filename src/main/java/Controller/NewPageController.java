@@ -46,6 +46,11 @@ public class NewPageController {
     }
     }
     
+    @FXML
+    private void next() {
+    	PageSwitcher.switchTo(Page.PREPARE);
+    }
+    
     
     @FXML
     private void deleteZutatRow() {
