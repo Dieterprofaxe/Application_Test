@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,13 +13,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/NewPage.css"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.NewPageController">
+<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/NewPage.css" xmlns="http://javafx.com/javafx/8.0.402" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPageController">
 
     <!-- Hauptlayout -->
-    <VBox spacing="20" AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+    <VBox spacing="20" AnchorPane.bottomAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
 
         <!-- Überschrift -->
         <Label styleClass="heading" text="Neues Gericht anlegen" />
@@ -40,18 +38,19 @@
                     <Label text="Dauer (Minuten):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="durationField" promptText="z. B. 30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
+                    <!-- Anzahl der Personen -->
+                    <Label text="Anzahl der Personen:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <ChoiceBox fx:id="personenChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
                     <!-- Zutatenbereich -->
-                    <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                    <HBox spacing="40" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <HBox spacing="40" GridPane.columnIndex="1" GridPane.rowIndex="3">
 
                         <!-- Hauptzutaten -->
                         <VBox spacing="10">
                             <Label text="Zutaten:" />
                             <VBox fx:id="hauptzutatenList" spacing="5">
-                                <HBox spacing="5">
-                                    <TextField prefWidth="150" promptText="Zutat" />
-                                    <TextField prefWidth="150" promptText="Einheit" />
-                                </HBox>
+                                <HBox spacing="5" />
                             </VBox>
                             <HBox spacing="10">
                                 <Button onAction="#addHauptzutatRow" text="+" />
@@ -59,24 +58,10 @@
                             </HBox>
                         </VBox>
 
-                        <!-- Zusatzzutaten -->
-                        <VBox spacing="10">
-                            <Label text="Weitere Zutaten:" />
-                            <VBox fx:id="zusatzzutatenList" spacing="5">
-                                <HBox spacing="5">
-                                    <TextField prefWidth="150" promptText="Zutat" />
-                                    <TextField prefWidth="150" promptText="Einheit" />
-                                </HBox>
-                            </VBox>
-                            <HBox spacing="10">
-                                <Button onAction="#addZusatzzutatRow" text="+" />
-                                <Button onAction="#deleteZusatzzutatRow" text="-" />
-                            </HBox>
-                        </VBox>
-
                     </HBox>
 
                     <rowConstraints>
+                        <RowConstraints />
                         <RowConstraints />
                         <RowConstraints />
                         <RowConstraints />
@@ -88,7 +73,7 @@
 
         <!-- Footer Buttons (bleiben fixiert unten) -->
         <HBox alignment="CENTER_RIGHT" spacing="20">
-            <Button mnemonicParsing="false" text="Nächste Seite" onAction="#next">
+            <Button mnemonicParsing="false" onAction="#next" text="Nächste Seite">
                 <HBox.margin>
                     <Insets right="540.0" />
                 </HBox.margin>

@@ -23,7 +23,7 @@
                
                <!-- Container für dynamische Felder -->
                <VBox fx:id="stepsContainer" spacing="10">
-                  <TextField promptText="Zubereitungsschritt 1" styleClass="text-field" />
+                  <TextField promptText="Zubereitungsschritt: 1" styleClass="text-field" />
                </VBox>
 
                <HBox spacing="10">
@@ -39,7 +39,7 @@
                         <Insets right="540.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btn_cancel" styleClass="cancel-button" text="Abbrechen" />
+                  <Button fx:id="btn_cancel" styleClass="cancel-button" text="Abbrechen" onAction="#show"/>
                   <Button fx:id="btn_save" defaultButton="true" styleClass="save-button" text="Speichern" />
                </children>
                <VBox.margin>
