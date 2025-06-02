@@ -1,53 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/PreparePage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PreparePageController">
-   <children>
-      <VBox alignment="TOP_LEFT" spacing="30.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
-         <children>
-            <Label styleClass="heading" text="Zubereitung des Gerichtes" />
+<AnchorPane prefHeight="834.0" prefWidth="1194.0"
+            stylesheets="@../Stylesheet/PreparePage.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.PreparePageController">
 
-            <VBox spacing="10">
-               <Label text="Zubereitung:" />
+    <children>
+        <VBox alignment="TOP_LEFT" spacing="30.0"
+              AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40"
+              AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
+            <children>
+                <Label styleClass="heading" text="Zubereitung des Gerichtes" />
 
-               <!-- ScrollPane für die Zubereitungsschritte -->
-               <ScrollPane fitToWidth="true" prefHeight="534.0" prefWidth="1114.0" style="-fx-background-color:transparent;">
-                  <content>
-                     <VBox fx:id="stepsContainer" spacing="10">
-                        <TextField fx:id="PrepareField" promptText="Zubereitungsschritt: 1" styleClass="text-field" />
-                     </VBox>
-                  </content>
-               </ScrollPane>
+                <VBox spacing="10">
+                    <Label text="Zubereitung:" />
 
-               <HBox spacing="10">
-                  <Button fx:id="add" onAction="#addRow" text="+" />
-                  <Button fx:id="delete" onAction="#removeRow" text="-" />
-               </HBox>
-            </VBox>
+                    <ScrollPane fitToWidth="true" prefHeight="534.0" prefWidth="1114.0" style="-fx-background-color:transparent;">
+                        <content>
+                            <VBox fx:id="stepsContainer" spacing="10">
+                                <TextField fx:id="stepField1"   />
+                                <TextField fx:id="stepField3"  />
+                                <TextField fx:id="stepField2"   />
+                                <TextField fx:id="stepField4"   />
+                                <TextField fx:id="stepField5"   />
+                                <TextField fx:id="stepField6"   />
+                                <TextField fx:id="stepField7"   />
+                                <TextField fx:id="stepField8"   />
+                                <TextField fx:id="stepField9"   />
+                                <TextField fx:id="stepField10"  />
+                                <TextField fx:id="stepField11"  />
+                                <TextField fx:id="stepField12"  />
+                                <TextField fx:id="stepField13"  />
+                                <TextField fx:id="stepField14"  />
+                                <TextField fx:id="stepField15"  />
+                                <TextField fx:id="stepField16"  />
+                                <TextField fx:id="stepField17"  />
+                                <TextField fx:id="stepField18"  />
+                                <TextField fx:id="stepField19"  />
+                                <TextField fx:id="stepField20"  />
+                                <TextField fx:id="stepField21"  />
+                                <TextField fx:id="stepField22"  />
+                                <TextField fx:id="stepField23"  />
+                                <TextField fx:id="stepField24"  />
+                                <TextField fx:id="stepField25"  />
+                                <TextField fx:id="stepField26"  />
+                                <TextField fx:id="stepField27"  />
+                                <TextField fx:id="stepField28"  />
+                                <TextField fx:id="stepField29"  />
+                                <TextField fx:id="stepField30"  />
+                            </VBox>
+                        </content>
+                    </ScrollPane>
+                </VBox>
 
-            <HBox alignment="CENTER_RIGHT" spacing="20">
-               <children>
-                  <Button fx:id="btn_last" mnemonicParsing="false" onAction="#close" text="Vorherige Seite">
-                     <HBox.margin>
-                        <Insets right="540.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btn_cancel" onAction="#show" styleClass="cancel-button" text="Abbrechen" />
-                  <Button fx:id="btn_save" defaultButton="true" onAction="#text" styleClass="save-button" text="Speichern" />
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+                <HBox alignment="CENTER_RIGHT" spacing="20">
+                    <children>
+                        <Button fx:id="btn_last" mnemonicParsing="false" onAction="#close" text="Vorherige Seite">
+                            <HBox.margin>
+                                <Insets right="540.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btn_cancel" onAction="#show" styleClass="cancel-button" text="Abbrechen" />
+                        <Button fx:id="btn_save" defaultButton="true" styleClass="save-button" text="Speichern" onAction="#insert" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

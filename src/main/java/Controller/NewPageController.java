@@ -104,4 +104,5 @@ public class NewPageController {
             System.out.println("Bitte gültige Zahlen eingeben!");
         }
     }
+    
 }
