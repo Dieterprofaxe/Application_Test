@@ -12,6 +12,7 @@ import PageSwitching.PageSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 
@@ -19,6 +20,9 @@ public class FirstPageController {
 	
 	@FXML
 	private Button btn_close, btn_logOut, hiddenButton;
+	
+	@FXML
+	private VBox vbox_second;
 	
 	
 	

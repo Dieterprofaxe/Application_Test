@@ -70,7 +70,7 @@ public class PreparePageController {
              ResultSet rs = stmt.executeQuery()) {
         	
         	while (rs.next()) {
-        	     alt = rs.getInt("alt");  // nicht 'int alt', sondern 'alt ='
+        	     alt = rs.getInt("alt");  
         	     name = rs.getString("name");
 
         	    System.out.println("ID: " + alt + ", Name: " + name + ", Dauer: ");

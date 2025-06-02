@@ -21,7 +21,7 @@
       <VBox alignment="CENTER" spacing="30.0" styleClass="card-container">
          <children>
             <!-- Title -->
-            <Label text="Fressen" styleClass="main-title"/>
+            <Label text="Essen" styleClass="main-title"/>
 
             <!-- Form -->
             <VBox spacing="20.0" alignment="CENTER_LEFT" styleClass="form-group">

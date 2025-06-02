@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -38,9 +37,9 @@
                     <Label text="Dauer (Minuten):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="durationField" promptText="z. B. 30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                    <!-- Anzahl der Personen -->
+                    <!-- Anzahl der Personen (TextField statt ChoiceBox) -->
                     <Label text="Anzahl der Personen:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                    <ChoiceBox fx:id="personenChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="personenField" promptText="z. B. 2" prefWidth="80" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
                     <!-- Zutatenbereich -->
                     <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
@@ -79,7 +78,7 @@
                 </HBox.margin>
             </Button>
             <Button fx:id="cancelButton" onAction="#close" styleClass="cancel-button" text="Abbrechen" />
-            <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" />
+            <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" onAction="#show" />
         </HBox>
 
     </VBox>
