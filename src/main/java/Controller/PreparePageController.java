@@ -25,7 +25,14 @@ public class PreparePageController {
 	@FXML
 	private TextField PrepareField;
 	
+	@FXML
 	int schritt = 2;
+	
+	@FXML
+	private int alt;
+	
+	@FXML
+	private String name;
 	
 	@FXML
 	private void close() {
@@ -53,25 +60,31 @@ public class PreparePageController {
             stepsContainer.getChildren().remove(count - 1);
         }
     }
-    public void show() {
+    @FXML
+    private void show() {
         String sql = "SELECT * FROM gerichte";
 
         try (Connection conn = DBConnection.getConnection();
+   
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
+        	
+        	while (rs.next()) {
+        	     alt = rs.getInt("alt");  // nicht 'int alt', sondern 'alt ='
+        	     name = rs.getString("name");
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                int dauer = rs.getInt("dauer");
-
-                System.out.println("ID: " + id + ", Name: " + name + ", Dauer: " + dauer + " Minuten");
-            }
+        	    System.out.println("ID: " + alt + ", Name: " + name + ", Dauer: ");
+        	}
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     
+    @FXML
+    private void text() {
+        PrepareField.setText(String.valueOf(name));
+        System.out.println(name);
+    }
    
 }
