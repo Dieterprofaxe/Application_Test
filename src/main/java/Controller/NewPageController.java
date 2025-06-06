@@ -6,11 +6,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import Enums.Page;
+import Helper.GerichtHolder;
 import PageSwitching.PageSwitcher;
 
 public class NewPageController {
@@ -22,16 +27,53 @@ public class NewPageController {
     private Button cancelButton, saveButton;
 
     @FXML
-    private VBox zutatenContainer, zutatenList, hauptzutatenList;
+    private VBox hauptzutatenList;
 
     @FXML
     private TextField personenField, nameField, durationField;
 
-    private int zutatCounter = 3;
+  
+    @FXML private TextField zutatField1, zutatField2, zutatField3, zutatField4, zutatField5,
+            zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
+            zutatField11, zutatField12, zutatField13, zutatField14, zutatField15,
+            zutatField16, zutatField17, zutatField18, zutatField19, zutatField20,
+            zutatField21, zutatField22, zutatField23, zutatField24, zutatField25,
+            zutatField26, zutatField27, zutatField28, zutatField29, zutatField30;
 
+    @FXML private TextField einheitField1, einheitField2, einheitField3, einheitField4, einheitField5,
+            einheitField6, einheitField7, einheitField8, einheitField9, einheitField10,
+            einheitField11, einheitField12, einheitField13, einheitField14, einheitField15,
+            einheitField16, einheitField17, einheitField18, einheitField19, einheitField20,
+            einheitField21, einheitField22, einheitField23, einheitField24, einheitField25,
+            einheitField26, einheitField27, einheitField28, einheitField29, einheitField30;
+
+    private List<TextField> zutatFields;
+    private List<TextField> einheitFields;
+    
+    
+    
     @FXML
     public void initialize() {
         personenField.setText("1");
+
+       
+        zutatFields = Arrays.asList(
+                zutatField1, zutatField2, zutatField3, zutatField4, zutatField5,
+                zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
+                zutatField11, zutatField12, zutatField13, zutatField14, zutatField15,
+                zutatField16, zutatField17, zutatField18, zutatField19, zutatField20,
+                zutatField21, zutatField22, zutatField23, zutatField24, zutatField25,
+                zutatField26, zutatField27, zutatField28, zutatField29, zutatField30
+        );
+
+        einheitFields = Arrays.asList(
+                einheitField1, einheitField2, einheitField3, einheitField4, einheitField5,
+                einheitField6, einheitField7, einheitField8, einheitField9, einheitField10,
+                einheitField11, einheitField12, einheitField13, einheitField14, einheitField15,
+                einheitField16, einheitField17, einheitField18, einheitField19, einheitField20,
+                einheitField21, einheitField22, einheitField23, einheitField24, einheitField25,
+                einheitField26, einheitField27, einheitField28, einheitField29, einheitField30
+        );
     }
 
     @FXML
@@ -45,64 +87,58 @@ public class NewPageController {
     }
 
     @FXML
-    private void deleteZutatRow() {
-        int count = zutatenList.getChildren().size();
-        if (count > 0) {
-            zutatenList.getChildren().remove(count - 1);
-            zutatCounter -= 2;
-            if (zutatCounter < 1) zutatCounter = 1;
-        }
-    }
-
-    @FXML
-    private void addHauptzutatRow() {
-        hauptzutatenList.getChildren().add(createZutatRow());
-    }
-
-    @FXML
-    private void deleteHauptzutatRow() {
-        int count = hauptzutatenList.getChildren().size();
-        if (count > 0) hauptzutatenList.getChildren().remove(count - 1);
-    }
-
-    @FXML
-    private HBox createZutatRow() {
-        HBox row = new HBox(50);
-        TextField zutat = new TextField();
-        zutat.setPromptText("Zutat");
-        zutat.setPrefWidth(300);
-        TextField einheit = new TextField();
-        einheit.setPromptText("Einheit");
-        einheit.setPrefWidth(200);
-        row.getChildren().addAll(zutat, einheit);
-        return row;
-    }
-
-    @FXML
     private void show() {
-        String sql = "INSERT INTO gerichte (name, dauer, personenanzahl) VALUES (?, ?, ?)";
+        String sqlGericht = "INSERT INTO gerichte (name, dauer, personenanzahl) VALUES (?, ?, ?)";
+        String sqlZutat = "INSERT INTO zutaten (gericht_id, bezeichnung, einheit) VALUES (?, ?, ?)";
 
         String name = nameField.getText();
+
         try {
             int dauer = Integer.parseInt(durationField.getText());
             int anzahl = Integer.parseInt(personenField.getText());
 
-            try (Connection conn = java.sql.DriverManager.getConnection(URL, USER, PASSWORD);
-                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+            try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+                 PreparedStatement stmtGericht = conn.prepareStatement(sqlGericht, Statement.RETURN_GENERATED_KEYS);
+                 PreparedStatement stmtZutat = conn.prepareStatement(sqlZutat)) {
 
-                stmt.setString(1, name);
-                stmt.setInt(2, dauer);
-                stmt.setInt(3, anzahl);
+                
+                stmtGericht.setString(1, name);
+                stmtGericht.setInt(2, dauer);
+                stmtGericht.setInt(3, anzahl);
+                stmtGericht.executeUpdate();
 
-                stmt.executeUpdate();
-                System.out.println("Gericht gespeichert.");
+                
+                ResultSet rs = stmtGericht.getGeneratedKeys();
+                int gerichtId = -1;
+                if (rs.next()) {
+                    gerichtId = rs.getInt(1);
+                    GerichtHolder.setGerichtId(gerichtId);
+                }
+
+               
+                for (int i = 0; i < zutatFields.size(); i++) {
+                    String zutat = zutatFields.get(i).getText();
+                    String einheit = einheitFields.get(i).getText();
+
+                    if (zutat != null && !zutat.trim().isEmpty()) {
+                        stmtZutat.setInt(1, gerichtId);
+                        stmtZutat.setString(2, zutat);
+                        stmtZutat.setString(3, einheit != null ? einheit : "");
+                        stmtZutat.addBatch();
+                    }
+                }
+
+                stmtZutat.executeBatch();
+                System.out.println("Gericht und Zutaten erfolgreich gespeichert.");
+                JOptionPane.showMessageDialog(null, "Erfolgreich Gespeichert");
 
             } catch (SQLException e) {
                 e.printStackTrace();
+                System.err.println("Fehler beim Speichern in der Datenbank.");
             }
+
         } catch (NumberFormatException e) {
             System.out.println("Bitte gültige Zahlen eingeben!");
         }
     }
-    
 }

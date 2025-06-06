@@ -9,55 +9,51 @@
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controller.PreparePageController">
-
     <children>
         <VBox alignment="TOP_LEFT" spacing="30.0"
               AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40"
               AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
             <children>
                 <Label styleClass="heading" text="Zubereitung des Gerichtes" />
-
                 <VBox spacing="10">
                     <Label text="Zubereitung:" />
-
                     <ScrollPane fitToWidth="true" prefHeight="534.0" prefWidth="1114.0" style="-fx-background-color:transparent;">
                         <content>
                             <VBox fx:id="stepsContainer" spacing="10">
-                                <TextField fx:id="stepField1"   />
-                                <TextField fx:id="stepField3"  />
-                                <TextField fx:id="stepField2"   />
-                                <TextField fx:id="stepField4"   />
-                                <TextField fx:id="stepField5"   />
-                                <TextField fx:id="stepField6"   />
-                                <TextField fx:id="stepField7"   />
-                                <TextField fx:id="stepField8"   />
-                                <TextField fx:id="stepField9"   />
-                                <TextField fx:id="stepField10"  />
-                                <TextField fx:id="stepField11"  />
-                                <TextField fx:id="stepField12"  />
-                                <TextField fx:id="stepField13"  />
-                                <TextField fx:id="stepField14"  />
-                                <TextField fx:id="stepField15"  />
-                                <TextField fx:id="stepField16"  />
-                                <TextField fx:id="stepField17"  />
-                                <TextField fx:id="stepField18"  />
-                                <TextField fx:id="stepField19"  />
-                                <TextField fx:id="stepField20"  />
-                                <TextField fx:id="stepField21"  />
-                                <TextField fx:id="stepField22"  />
-                                <TextField fx:id="stepField23"  />
-                                <TextField fx:id="stepField24"  />
-                                <TextField fx:id="stepField25"  />
-                                <TextField fx:id="stepField26"  />
-                                <TextField fx:id="stepField27"  />
-                                <TextField fx:id="stepField28"  />
-                                <TextField fx:id="stepField29"  />
-                                <TextField fx:id="stepField30"  />
+                                <TextField fx:id="stepField1" promptText="Zubereitungsschritt: 1"    />
+                                <TextField fx:id="stepField3" promptText="Zubereitungsschritt: 2"   />
+                                <TextField fx:id="stepField2" promptText="Zubereitungsschritt: 3"   />
+                                <TextField fx:id="stepField4" promptText="Zubereitungsschritt: 4"   />
+                                <TextField fx:id="stepField5" promptText="Zubereitungsschritt: 5"   />
+                                <TextField fx:id="stepField6" promptText="Zubereitungsschritt: 6"   />
+                                <TextField fx:id="stepField7" promptText="Zubereitungsschritt: 7"  />
+                                <TextField fx:id="stepField8" promptText="Zubereitungsschritt: 8"  />
+                                <TextField fx:id="stepField9" promptText="Zubereitungsschritt: 9"  />
+                                <TextField fx:id="stepField10" promptText="Zubereitungsschritt: 10" />
+                                <TextField fx:id="stepField11" promptText="Zubereitungsschritt: 11" />
+                                <TextField fx:id="stepField12" promptText="Zubereitungsschritt: 12" />
+                                <TextField fx:id="stepField13" promptText="Zubereitungsschritt: 13" />
+                                <TextField fx:id="stepField14" promptText="Zubereitungsschritt: 14" />
+                                <TextField fx:id="stepField15" promptText="Zubereitungsschritt: 15" />
+                                <TextField fx:id="stepField16" promptText="Zubereitungsschritt: 16" />
+                                <TextField fx:id="stepField17" promptText="Zubereitungsschritt: 17" />
+                                <TextField fx:id="stepField18" promptText="Zubereitungsschritt: 18" />
+                                <TextField fx:id="stepField19" promptText="Zubereitungsschritt: 19" />
+                                <TextField fx:id="stepField20" promptText="Zubereitungsschritt: 20" />
+                                <TextField fx:id="stepField21" promptText="Zubereitungsschritt: 21" />
+                                <TextField fx:id="stepField22" promptText="Zubereitungsschritt: 22" />
+                                <TextField fx:id="stepField23" promptText="Zubereitungsschritt: 23" />
+                                <TextField fx:id="stepField24" promptText="Zubereitungsschritt: 24" />
+                                <TextField fx:id="stepField25" promptText="Zubereitungsschritt: 25" />
+                                <TextField fx:id="stepField26" promptText="Zubereitungsschritt: 26" />
+                                <TextField fx:id="stepField27" promptText="Zubereitungsschritt: 27" />
+                                <TextField fx:id="stepField28" promptText="Zubereitungsschritt: 28" />
+                                <TextField fx:id="stepField29" promptText="Zubereitungsschritt: 29" />
+                                <TextField fx:id="stepField30" promptText="Zubereitungsschritt: 30" />
                             </VBox>
                         </content>
                     </ScrollPane>
                 </VBox>
-
                 <HBox alignment="CENTER_RIGHT" spacing="20">
                     <children>
                         <Button fx:id="btn_last" mnemonicParsing="false" onAction="#close" text="Vorherige Seite">

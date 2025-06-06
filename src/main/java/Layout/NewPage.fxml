@@ -14,13 +14,9 @@
 
 <AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/NewPage.css" xmlns="http://javafx.com/javafx/8.0.402" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPageController">
 
-    <!-- Hauptlayout -->
     <VBox spacing="20" AnchorPane.bottomAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
-
-        <!-- Überschrift -->
         <Label styleClass="heading" text="Neues Gericht anlegen" />
 
-        <!-- Scrollbarer Inhalt -->
         <ScrollPane fitToWidth="true" prefHeight="600">
             <VBox spacing="30">
                 <GridPane hgap="25" vgap="20">
@@ -29,35 +25,55 @@
                         <ColumnConstraints hgrow="ALWAYS" />
                     </columnConstraints>
 
-                    <!-- Name -->
                     <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <TextField fx:id="nameField" promptText="Name des Gerichts" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                    <!-- Dauer -->
                     <Label text="Dauer (Minuten):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="durationField" promptText="z. B. 30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                    <!-- Anzahl der Personen (TextField statt ChoiceBox) -->
                     <Label text="Anzahl der Personen:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                     <TextField fx:id="personenField" promptText="z. B. 2" prefWidth="80" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                    <!-- Zutatenbereich -->
                     <Label text="Zutaten:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                    <HBox spacing="40" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <ScrollPane fitToWidth="true" prefHeight="300" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <VBox fx:id="hauptzutatenList" spacing="10">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10" />
+                            </padding>
 
-                        <!-- Hauptzutaten -->
-                        <VBox spacing="10">
-                            <Label text="Zutaten:" />
-                            <VBox fx:id="hauptzutatenList" spacing="5">
-                                <HBox spacing="5" />
-                            </VBox>
-                            <HBox spacing="10">
-                                <Button onAction="#addHauptzutatRow" text="+" />
-                                <Button onAction="#deleteHauptzutatRow" text="-" />
-                            </HBox>
+                            <!-- 30 Zutatenzeilen mit fx:id -->
+                            <HBox spacing="10"><TextField fx:id="zutatField1" promptText="Zutat 1" /><TextField fx:id="einheitField1" promptText="Einheit 1" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField2" promptText="Zutat 2" /><TextField fx:id="einheitField2" promptText="Einheit 2" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField3" promptText="Zutat 3" /><TextField fx:id="einheitField3" promptText="Einheit 3" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField4" promptText="Zutat 4" /><TextField fx:id="einheitField4" promptText="Einheit 4" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField5" promptText="Zutat 5" /><TextField fx:id="einheitField5" promptText="Einheit 5" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField6" promptText="Zutat 6" /><TextField fx:id="einheitField6" promptText="Einheit 6" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField7" promptText="Zutat 7" /><TextField fx:id="einheitField7" promptText="Einheit 7" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField8" promptText="Zutat 8" /><TextField fx:id="einheitField8" promptText="Einheit 8" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField9" promptText="Zutat 9" /><TextField fx:id="einheitField9" promptText="Einheit 9" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField10" promptText="Zutat 10" /><TextField fx:id="einheitField10" promptText="Einheit 10" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField11" promptText="Zutat 11" /><TextField fx:id="einheitField11" promptText="Einheit 11" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField12" promptText="Zutat 12" /><TextField fx:id="einheitField12" promptText="Einheit 12" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField13" promptText="Zutat 13" /><TextField fx:id="einheitField13" promptText="Einheit 13" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField14" promptText="Zutat 14" /><TextField fx:id="einheitField14" promptText="Einheit 14" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField15" promptText="Zutat 15" /><TextField fx:id="einheitField15" promptText="Einheit 15" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField16" promptText="Zutat 16" /><TextField fx:id="einheitField16" promptText="Einheit 16" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField17" promptText="Zutat 17" /><TextField fx:id="einheitField17" promptText="Einheit 17" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField18" promptText="Zutat 18" /><TextField fx:id="einheitField18" promptText="Einheit 18" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField19" promptText="Zutat 19" /><TextField fx:id="einheitField19" promptText="Einheit 19" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField20" promptText="Zutat 20" /><TextField fx:id="einheitField20" promptText="Einheit 20" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField21" promptText="Zutat 21" /><TextField fx:id="einheitField21" promptText="Einheit 21" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField22" promptText="Zutat 22" /><TextField fx:id="einheitField22" promptText="Einheit 22" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField23" promptText="Zutat 23" /><TextField fx:id="einheitField23" promptText="Einheit 23" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField24" promptText="Zutat 24" /><TextField fx:id="einheitField24" promptText="Einheit 24" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField25" promptText="Zutat 25" /><TextField fx:id="einheitField25" promptText="Einheit 25" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField26" promptText="Zutat 26" /><TextField fx:id="einheitField26" promptText="Einheit 26" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField27" promptText="Zutat 27" /><TextField fx:id="einheitField27" promptText="Einheit 27" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField28" promptText="Zutat 28" /><TextField fx:id="einheitField28" promptText="Einheit 28" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField29" promptText="Zutat 29" /><TextField fx:id="einheitField29" promptText="Einheit 29" /></HBox>
+                            <HBox spacing="10"><TextField fx:id="zutatField30" promptText="Zutat 30" /><TextField fx:id="einheitField30" promptText="Einheit 30" /></HBox>
                         </VBox>
-
-                    </HBox>
+                    </ScrollPane>
 
                     <rowConstraints>
                         <RowConstraints />
@@ -70,16 +86,12 @@
             </VBox>
         </ScrollPane>
 
-        <!-- Footer Buttons (bleiben fixiert unten) -->
         <HBox alignment="CENTER_RIGHT" spacing="20">
             <Button mnemonicParsing="false" onAction="#next" text="Nächste Seite">
-                <HBox.margin>
-                    <Insets right="540.0" />
-                </HBox.margin>
+                <HBox.margin><Insets right="540.0" /></HBox.margin>
             </Button>
             <Button fx:id="cancelButton" onAction="#close" styleClass="cancel-button" text="Abbrechen" />
             <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" onAction="#show" />
         </HBox>
-
     </VBox>
 </AnchorPane>

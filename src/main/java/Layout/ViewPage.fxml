@@ -1,56 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.402"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.ViewPageController"
-            stylesheets="@../Stylesheet/ViewPage.css"
-            prefWidth="1194.0" prefHeight="834.0">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.ViewPageController">
 
-    <VBox spacing="20" AnchorPane.topAnchor="40" AnchorPane.leftAnchor="40"
-          AnchorPane.rightAnchor="40" AnchorPane.bottomAnchor="40">
+    <!-- Oben: Titel und Basisinfos -->
+    <top>
+        <VBox spacing="5" padding="10">
+            <Label fx:id="nameLabel" text="Rezeptname" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <HBox spacing="20">
+                <Label fx:id="dauerLabel" text="Dauer: 0 min"/>
+                <Label fx:id="personenLabel" text="Personen: 1"/>
+            </HBox>
+        </VBox>
+    </top>
 
-        <!-- Überschrift -->
-        <Label text="Alle Gerichte durchsuchen" styleClass="heading" />
-
-        <!-- Inhalt in ScrollPane -->
-        <ScrollPane fitToWidth="true" prefHeight="600">
-            <VBox spacing="30">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20" />
-                </padding>
-
-                <!-- Suchbereich -->
-                <GridPane hgap="25" vgap="20">
-                    <columnConstraints>
-                        <ColumnConstraints minWidth="180" />
-                        <ColumnConstraints hgrow="ALWAYS" />
-                    </columnConstraints>
-
-                    <Label text="Suchbegriff:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-                    <TextField fx:id="searchField" promptText="Gib ein Stichwort ein..."
-                               GridPane.rowIndex="0" GridPane.columnIndex="1" />
-
-                </GridPane>
-
-                <!-- Ergebnisliste -->
-                <VBox spacing="10">
-                    <Label text="Suchergebnisse:" styleClass="subheading" />
-                    <!-- dishContainer darf NICHT self-closing sein -->
-                    <VBox  spacing="15">
-                        <!-- Dynamische Inhalte werden hier zur Laufzeit hinzugefügt -->
-                    </VBox>
-                </VBox>
+    <!-- Mitte: Zutatenliste links, Zubereitung rechts -->
+    <center>
+        <HBox spacing="20" padding="10">
+            <VBox spacing="5" prefWidth="200">
+                <Label text="Zutaten:" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="zutatenListView" prefHeight="200" />
             </VBox>
-        </ScrollPane>
 
-        <!-- Navigation -->
-        <HBox alignment="CENTER_RIGHT" spacing="20">
-            <Button text="Zurück" fx:id="backButton" styleClass="cancel-button" onAction="#close"/>
-            <Button text="Suchen" fx:id="searchButton" />
+            <VBox spacing="5" prefWidth="400">
+                <Label text="Zubereitung:" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="zubereitungTextArea" wrapText="true" editable="false" prefHeight="200"/>
+            </VBox>
         </HBox>
-    </VBox>
-</AnchorPane>
+    </center>
+
+    <!-- Unten: Zurück Button -->
+    <bottom>
+        <HBox padding="10" alignment="CENTER_RIGHT">
+            <Button text="Zurück" onAction="#handleBackButton"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
