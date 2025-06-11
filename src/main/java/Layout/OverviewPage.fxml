@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="834.0" prefWidth="1194.0" stylesheets="@../Stylesheet/OverviewPage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewPageController">
+
+    <VBox spacing="20.0" AnchorPane.bottomAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="40">
+
+        <Label styleClass="heading" text="Gerichte Übersicht">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+
+        <HBox spacing="10">
+            <TextField fx:id="searchField" promptText="Suche nach Name..." />
+            <Button text="Suchen" />
+        </HBox>
+
+        <TableView fx:id="gerichtTable" prefHeight="700.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="300.0" text="Name" />
+                <TableColumn fx:id="dauerColumn" prefWidth="150.0" text="Dauer (Min)" />
+                <TableColumn fx:id="personenColumn" prefWidth="150.0" text="Personen" />
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="btn_edit" onAction="#view" text="Bearbeiten" />
+            <Button fx:id="btn_delete" text="Löschen" onAction="#delete" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

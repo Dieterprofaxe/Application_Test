@@ -1,48 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="834.0" prefWidth="1194.0"
+            stylesheets="@../Stylesheet/ViewPage.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controller.ViewPageController">
 
-    <!-- Oben: Titel und Basisinfos -->
-    <top>
-        <VBox spacing="5" padding="10">
-            <Label fx:id="nameLabel" text="Rezeptname" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-            <HBox spacing="20">
-                <Label fx:id="dauerLabel" text="Dauer: 0 min"/>
-                <Label fx:id="personenLabel" text="Personen: 1"/>
-            </HBox>
-        </VBox>
-    </top>
+    <VBox spacing="30" AnchorPane.topAnchor="40" AnchorPane.bottomAnchor="40" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40">
 
-    <!-- Mitte: Zutatenliste links, Zubereitung rechts -->
-    <center>
-        <HBox spacing="20" padding="10">
-            <VBox spacing="5" prefWidth="200">
-                <Label text="Zutaten:" style="-fx-font-weight: bold;"/>
-                <ListView fx:id="zutatenListView" prefHeight="200" />
-            </VBox>
+        <Label styleClass="heading" text="Rezeptübersicht" />
 
-            <VBox spacing="5" prefWidth="400">
-                <Label text="Zubereitung:" style="-fx-font-weight: bold;"/>
-                <TextArea fx:id="zubereitungTextArea" wrapText="true" editable="false" prefHeight="200"/>
-            </VBox>
+        <!-- Gerichtsinformationen -->
+        <GridPane hgap="20" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints minWidth="200"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Gericht:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="nameField" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label text="Dauer (Minuten):" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextField fx:id="durationField" editable="false" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <Label text="Personenanzahl:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="personenField" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        </GridPane>
+
+		<!-- Zutatenliste -->
+		<VBox spacing="10">
+		    <Label text="Zutaten:" />
+		    <ScrollPane prefHeight="200" fitToWidth="true">
+		        <content>
+		            <VBox fx:id="zutatenContainer" spacing="8">
+		                <padding>
+		                    <Insets top="10" right="10" bottom="10" left="10" />
+		                </padding>
+		                <!-- Dynamisch gefüllte HBox-Einträge -->
+		            </VBox>
+		        </content>
+		    </ScrollPane>
+		</VBox>
+		
+		<!-- Zubereitungsschritte -->
+		<VBox spacing="10">
+		    <Label text="Zubereitung:" />
+		    <ScrollPane prefHeight="300" fitToWidth="true">
+		        <content>
+		            <VBox fx:id="stepsContainer" spacing="10">
+		                <padding>
+		                    <Insets top="10" right="10" bottom="10" left="10" />
+		                </padding>
+		                <!-- Dynamisch gefüllte Schritte -->
+		            </VBox>
+		        </content>
+		    </ScrollPane>
+		</VBox>
+
+        <!-- Buttons -->
+        <HBox alignment="CENTER_RIGHT" spacing="20">
+            <Button fx:id="btn_back" text="Zurück" styleClass="back-button" onAction="#close"/>
+            <Button fx:id="btn_edit" text="Bearbeiten" styleClass="edit-button"/>
+            <Button fx:id="btn_save" text="Speichern" styleClass="save-button"/>
         </HBox>
-    </center>
 
-    <!-- Unten: Zurück Button -->
-    <bottom>
-        <HBox padding="10" alignment="CENTER_RIGHT">
-            <Button text="Zurück" onAction="#handleBackButton"/>
-        </HBox>
-    </bottom>
-
-</BorderPane>
+    </VBox>
+</AnchorPane>

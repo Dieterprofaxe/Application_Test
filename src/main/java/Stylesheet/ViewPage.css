@@ -1,52 +1,52 @@
-.root {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-background-color: #f9f9f9;
-}
-
 .heading {
-    -fx-font-size: 28px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333;
-}
-
-.subheading {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #555;
 }
 
 .label {
-    -fx-text-fill: #444;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
 }
 
-.text-field {
-    -fx-background-color: white;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 5px;
-    -fx-padding: 5px;
-}
-
-.choice-box {
-    -fx-background-color: white;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 5px;
-}
-
-.button {
-    -fx-background-color: #3f87a6;
+.back-button {
+    -fx-background-color: #d9534f; /* Bootstrap-artiges Rot */
     -fx-text-fill: white;
-    -fx-padding: 6px 12px;
-    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
 }
 
-.button:hover {
-    -fx-background-color: #35697d;
-}
-
-.cancel-button {
-    -fx-background-color: #d9534f;
-}
-
-.cancel-button:hover {
+.back-button:hover {
     -fx-background-color: #c9302c;
+}
+
+.edit-button {
+    -fx-background-color: #5bc0de; /* Hellblau (kann angepasst werden) */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+}
+
+.edit-button:hover {
+    -fx-background-color: #31b0d5;
+}
+
+.save-button {
+    -fx-background-color: #5cb85c; /* Grün (kann angepasst werden) */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+}
+
+.save-button:hover {
+    -fx-background-color: #449d44;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
 }

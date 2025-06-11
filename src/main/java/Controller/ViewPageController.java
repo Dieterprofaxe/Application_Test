@@ -6,11 +6,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.control.Button;
 
 public class ViewPageController {
 
     @FXML
-    private FlowPane dishContainer; // aus FXML referenziert
+    Button btn_back, btn_edit, btn_save;
+    
+    
+    
+    
     
     @FXML
     private void close() {

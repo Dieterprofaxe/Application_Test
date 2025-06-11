@@ -45,7 +45,7 @@ public class FirstPageController {
 	}
 	@FXML
 	private void view() {
-		PageSwitcher.switchTo(Page.VIEW);
+		PageSwitcher.switchTo(Page.OVERVIEW);
 	}
 	
 	

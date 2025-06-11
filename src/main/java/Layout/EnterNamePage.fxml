@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.EnterNamePageController"
+            stylesheets="@../Stylesheet/EnterNamePage.css"
+            prefWidth="600" prefHeight="400">
+
+    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+        
+        <Label text="Geben Sie den Namen des Gerichts ein:" styleClass="heading"/>
+
+        <TextField fx:id="nameInputField" promptText="z. B. Spaghetti Bolognese" prefWidth="300"/>
+
+        <Button fx:id="btn_continue" text="Weiter" onAction="#getName" styleClass="save-button"/>
+
+    </VBox>
+
+</AnchorPane>

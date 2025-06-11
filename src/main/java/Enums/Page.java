@@ -7,7 +7,9 @@ public enum Page {
 	EDIT("Layout/EditPage.fxml"),
 	TRY("https://www.test.de/"),
 	VIEW("/Layout/ViewPage.fxml"),
-	PREPARE("/Layout/PreparePage.fxml");
+	PREPARE("/Layout/PreparePage.fxml"),
+	OVERVIEW("/Layout/OverviewPage.fxml"),
+	NAME("/Layout/EnterNamePage.fxml");
 	
 	private String filename;
 	
