@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Gericht;
+import PageSwitching.PageSwitcher;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.print.DocFlavor.URL;
+
+import Enums.Page;
 
 public class OverviewPageController {
 	
@@ -46,7 +49,7 @@ public class OverviewPageController {
             System.out.println("Verbindung erfolgreich hergestellt");
 
             while (rs.next()) {
-                System.out.println(rs.getString("name") + ": " + rs.getString("dauer") + ": " + rs.getString("personenanzahl"));
+                System.out.println(rs.getString("name") + ": " + rs.getInt("dauer") + ": " + rs.getInt("personenanzahl"));
             }
             rs.close();
             stmt.close();
@@ -64,16 +67,17 @@ public class OverviewPageController {
         
         loadGerichte();
     }
-
+    @FXML
     private void loadGerichte() {
         ObservableList<Gericht> gerichte = FXCollections.observableArrayList();
 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT name, dauer, personenanzahl FROM gerichte")) {
+             ResultSet rs = stmt.executeQuery("SELECT id,name, dauer, personenanzahl FROM gerichte")) {
 
             while (rs.next()) {
                 gerichte.add(new Gericht(
+                		rs.getInt("id"),
                         rs.getString("name"),
                         rs.getInt("dauer"),
                         rs.getInt("personenanzahl")
@@ -90,37 +94,48 @@ public class OverviewPageController {
     
     @FXML
     private void delete() {
-    	Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
-    	if (ausgewählt == null) {
-    	    System.out.println("Keine Zeile ausgewählt.");
-    	    return;
-    	}
+        Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
+        if (ausgewählt == null) {
+            System.out.println("Keine Zeile ausgewählt.");
+            return;
+        }
 
-    	String name = ausgewählt.getName();
-    	
-    	String sqlzu = "DELETE FROM zutaten WHERE gericht_id = ?";
-    	String sqlzub = "DELETE FROM zubreitungsschritte WHERE gericht_id = ?";
-    	String sql = "DELETE FROM gerichte WHERE name = ?";
+        int id = ausgewählt.getId();
 
-    	try (Connection conn = DBConnection.getConnection();
-    		 PreparedStatement stmt1 = conn.prepareStatement(sqlzu);
-    		 PreparedStatement stmt2 = conn.prepareStatement(sqlzub);
-    	     PreparedStatement stmt = conn.prepareStatement(sql)) {
+        String sqlZutaten = "DELETE FROM zutaten WHERE gericht_id = ?";
+        String sqlZubereitung = "DELETE FROM zubereitungsschritte WHERE gericht_id = ?";
+        String sqlGerichte = "DELETE FROM gerichte WHERE id = ?";
 
-    	    stmt.setString(1, name);
-    	    stmt1.setString(1, sql);
-    	    int affectedRows = stmt.executeUpdate();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmtZutaten = conn.prepareStatement(sqlZutaten);
+             PreparedStatement stmtZubereitung = conn.prepareStatement(sqlZubereitung);
+             PreparedStatement stmtGerichte = conn.prepareStatement(sqlGerichte)) {
 
-    	    if (affectedRows > 0) {
-    	        System.out.println("Gericht mit Name '" + name + "' wurde gelöscht.");
-    	        loadGerichte();  
-    	    } else {
-    	        System.out.println("Kein Gericht mit Name '" + name + "' gefunden.");
-    	    }
+            stmtZutaten.setInt(1, id);
+            stmtZutaten.executeUpdate();
 
-    	} catch (SQLException e) {
-    	    e.printStackTrace();
-    	    System.err.println("Fehler beim Löschen des Datensatzes.");
-    	}
-}
+            stmtZubereitung.setInt(1, id);
+            stmtZubereitung.executeUpdate();
+
+            stmtGerichte.setInt(1, id);
+            int affectedRows = stmtGerichte.executeUpdate();
+
+            if (affectedRows > 0) {
+                System.out.println("Gericht erfolgreich gelöscht.");
+                loadGerichte();
+            } else {
+                System.out.println("Kein Gericht mit dieser ID gefunden.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Fehler beim Löschen des Datensatzes.");
+        }
+    }
+    
+    
+    @FXML
+    private void back() {
+    	PageSwitcher.switchTo(Page.FIRST);
+    }
     }

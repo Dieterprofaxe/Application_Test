@@ -54,7 +54,15 @@ public class NewPageController {
     
     @FXML
     public void initialize() {
-        personenField.setText("1");
+    	
+    	nameField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
+        durationField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
+        personenField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
+ 
+    	
+    	
+	
+        personenField.setText("");
 
        
         zutatFields = Arrays.asList(
@@ -85,6 +93,40 @@ public class NewPageController {
     private void next() {
         PageSwitcher.switchTo(Page.PREPARE);
     }
+    
+    
+    
+    @FXML
+    private void checkFields() {
+    	saveButton.setDisable(true);
+    	
+    	String f1 = nameField.getText();
+        String durationText = durationField.getText();
+        String personenText = personenField.getText();
+
+        int f2 = 0;
+        int f3 = 0;
+
+        try {
+            f2 = Integer.parseInt(durationText);
+        } catch (NumberFormatException e) {
+            f2 = 0;
+        }
+
+        try {
+            f3 = Integer.parseInt(personenText);
+        } catch (NumberFormatException e) {
+            f3 = 0;
+        }
+
+        if (f1 != null && !f1.trim().isEmpty() && f2 > 0 && f3 > 0) {
+            saveButton.setDisable(false);
+        } else {
+            saveButton.setDisable(true);
+        }
+    }
+    
+   
 
     @FXML
     private void show() {

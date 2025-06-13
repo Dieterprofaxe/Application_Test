@@ -91,7 +91,7 @@
                 <HBox.margin><Insets right="540.0" /></HBox.margin>
             </Button>
             <Button fx:id="cancelButton" onAction="#close" styleClass="cancel-button" text="Abbrechen" />
-            <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" onAction="#show" />
+            <Button fx:id="saveButton" defaultButton="true" styleClass="save-button" text="Speichern" onAction="#show"/>
         </HBox>
     </VBox>
 </AnchorPane>

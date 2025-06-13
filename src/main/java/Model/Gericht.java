@@ -1,17 +1,23 @@
 package Model;
 
 public class Gericht {
+	private int id;
 	private String name;
 	private int dauer;
-	private int personen;
+	private int personenanzahl;
 	
 	
-	public Gericht(String name, int dauer, int personen) {
+	public Gericht(int id, String name, int dauer, int personenanzahl) {
+		this.id = id;
 		this.name = name;
 		this.dauer = dauer;
-		this.personen = personen;
+		this.personenanzahl = personenanzahl;
 	}
 	
+	
+	public int getId() {
+		return id;
+	}
 	
 	public String getName() {
 		return name;
@@ -21,7 +27,7 @@ public class Gericht {
 		return dauer;
 	}
 	
-	public int getPersonen() {
-		return personen;
+	public int getPersonenanzahl() {
+		return personenanzahl;
 	}
 }

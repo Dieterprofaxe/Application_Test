@@ -1,0 +1,97 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #f9f9f9;
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333;
+}
+
+.heading {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Einheitliches Styling für Eingabefelder */
+.text-field,
+.text-area,
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+/* Extra für TextArea – für Konsistenz */
+.text-area {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-wrap-text: true;
+    -fx-pref-row-count: 5;
+    -fx-max-height: 180px;
+    -fx-focus-color: #2ecc71;
+}
+
+/* TableView Styling */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #ecf0f1;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+}
+
+/* Buttons */
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 20 8 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Speichern-Button */
+.save-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+}
+
+/* Abbrechen-Button */
+.cancel-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-opacity: 0.85;
+}
+
+/* Kleine Icon-Buttons (+/-) */
+.icon-button {
+    -fx-font-size: 16px;
+    -fx-padding: 5 10;
+    -fx-background-color: #f0f0f0;
+    -fx-border-radius: 5;
+}
+
+/* Optional: Scrollbar verfeinern */
+.text-area .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+    -fx-background-color: transparent;
+}
+.text-area .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 5;
+}
