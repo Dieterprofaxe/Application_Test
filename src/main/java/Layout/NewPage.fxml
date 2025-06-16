@@ -87,7 +87,7 @@
         </ScrollPane>
 
         <HBox alignment="CENTER_RIGHT" spacing="20">
-            <Button mnemonicParsing="false" onAction="#next" text="Nächste Seite">
+            <Button fx:id="next" mnemonicParsing="false" onAction="#next" text="Nächste Seite">
                 <HBox.margin><Insets right="540.0" /></HBox.margin>
             </Button>
             <Button fx:id="cancelButton" onAction="#close" styleClass="cancel-button" text="Abbrechen" />

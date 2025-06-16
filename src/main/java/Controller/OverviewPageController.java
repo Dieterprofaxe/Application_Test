@@ -8,14 +8,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.collections.transformation.FilteredList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import javafx.scene.control.TextField;
 import javax.print.DocFlavor.URL;
 
 import Enums.Page;
@@ -38,6 +38,12 @@ public class OverviewPageController {
 
     @FXML
     private TableColumn<Gericht, Integer> personenColumn;
+    
+    @FXML
+    private TextField searchField;
+
+    private ObservableList<Gericht> gerichte = FXCollections.observableArrayList();
+    private FilteredList<Gericht> filteredGerichte;
 
     @FXML
     private void view() {
@@ -61,33 +67,56 @@ public class OverviewPageController {
 
     @FXML
     private void initialize() {
+    	
+    	searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredGerichte.setPredicate(gericht -> {
+                // Wenn Suchfeld leer -> alles anzeigen
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return gericht.getName().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+    	
+    	
         nameColumn.setCellValueFactory(new PropertyValueFactory<Gericht, String>("name"));
         dauerColumn.setCellValueFactory(new PropertyValueFactory<Gericht, Integer>("dauer"));
         personenColumn.setCellValueFactory(new PropertyValueFactory<Gericht, Integer>("personenanzahl"));
         
         loadGerichte();
     }
+    
+    
+   
+    
+    
+    
+    
     @FXML
     private void loadGerichte() {
-        ObservableList<Gericht> gerichte = FXCollections.observableArrayList();
+    	gerichte.clear(); // Wichtig: Liste leeren, sonst doppelt geladen
 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT id,name, dauer, personenanzahl FROM gerichte")) {
+             ResultSet rs = stmt.executeQuery("SELECT id, name, dauer, personenanzahl FROM gerichte")) {
 
             while (rs.next()) {
                 gerichte.add(new Gericht(
-                		rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getInt("dauer"),
-                        rs.getInt("personenanzahl")
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("dauer"),
+                    rs.getInt("personenanzahl")
                 ));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        gerichtTable.setItems(gerichte);
+        filteredGerichte = new FilteredList<>(gerichte, p -> true);
+        gerichtTable.setItems(filteredGerichte);
     }
     
     

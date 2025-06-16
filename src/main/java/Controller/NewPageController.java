@@ -6,7 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class NewPageController {
     private static final String PASSWORD = "";
 
     @FXML
-    private Button cancelButton, saveButton;
+    private Button cancelButton, saveButton, next;
 
     @FXML
     private VBox hauptzutatenList;
@@ -54,6 +55,7 @@ public class NewPageController {
     
     @FXML
     public void initialize() {
+    
     	
     	nameField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
         durationField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
@@ -62,7 +64,7 @@ public class NewPageController {
     	
     	
 	
-        personenField.setText("");
+        personenField.setText("1");
 
        
         zutatFields = Arrays.asList(
@@ -125,8 +127,7 @@ public class NewPageController {
             saveButton.setDisable(true);
         }
     }
-    
-   
+
 
     @FXML
     private void show() {

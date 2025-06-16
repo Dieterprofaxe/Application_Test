@@ -6,20 +6,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.sql.*;
 import java.util.Arrays;
 import java.util.List;
 
 public class PreparePageController {
-
+	
+	@FXML
     private static final String URL = "jdbc:mysql://localhost:3306/meinedb?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root";
+    @FXML
+	private static final String USER = "root";
+    @FXML
     private static final String PASSWORD = "";
 
+    @FXML
+    private Button btn_last, btn_save; 
+    
+    
+    @FXML
     private int gerichtId;
 
+    @FXML
     public void setGerichtId(int id) {
         this.gerichtId = id;
     }
@@ -38,6 +48,17 @@ public class PreparePageController {
 
     @FXML
     public void initialize() {
+    	btn_last.setDisable(true);
+    	
+    	
+    	 btn_save.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+                 System.out.println("Button wurde geklickt!");
+                 btn_last.setDisable(false);
+             }
+         });
+    	
         
         stepFields = Arrays.asList(
                 stepField1, stepField2, stepField3, stepField4, stepField5,
@@ -62,6 +83,13 @@ public class PreparePageController {
         PageSwitcher.switchTo(Page.FIRST);
     }
 
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void insert() {
         String insertSql = "INSERT INTO zubereitungsschritte (gericht_id, schritt_nr, beschreibung) VALUES (?, ?, ?)";
