@@ -32,22 +32,22 @@ public class NewPageController {
 
     @FXML
     private TextField personenField, nameField, durationField;
-
-  
+    		
+    		
     @FXML private TextField zutatField1, zutatField2, zutatField3, zutatField4, zutatField5,
             zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
             zutatField11, zutatField12, zutatField13, zutatField14, zutatField15,
             zutatField16, zutatField17, zutatField18, zutatField19, zutatField20,
             zutatField21, zutatField22, zutatField23, zutatField24, zutatField25,
             zutatField26, zutatField27, zutatField28, zutatField29, zutatField30;
-
+    		
     @FXML private TextField einheitField1, einheitField2, einheitField3, einheitField4, einheitField5,
             einheitField6, einheitField7, einheitField8, einheitField9, einheitField10,
             einheitField11, einheitField12, einheitField13, einheitField14, einheitField15,
             einheitField16, einheitField17, einheitField18, einheitField19, einheitField20,
             einheitField21, einheitField22, einheitField23, einheitField24, einheitField25,
             einheitField26, einheitField27, einheitField28, einheitField29, einheitField30;
-
+    		
     private List<TextField> zutatFields;
     private List<TextField> einheitFields;
     
@@ -55,7 +55,8 @@ public class NewPageController {
     
     @FXML
     public void initialize() {
-    
+    	
+    	next.setDisable(true);
     	
     	nameField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
         durationField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
@@ -65,8 +66,8 @@ public class NewPageController {
     	
 	
         personenField.setText("1");
-
-       
+        		
+        		
         zutatFields = Arrays.asList(
                 zutatField1, zutatField2, zutatField3, zutatField4, zutatField5,
                 zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
@@ -75,7 +76,7 @@ public class NewPageController {
                 zutatField21, zutatField22, zutatField23, zutatField24, zutatField25,
                 zutatField26, zutatField27, zutatField28, zutatField29, zutatField30
         );
-
+        		
         einheitFields = Arrays.asList(
                 einheitField1, einheitField2, einheitField3, einheitField4, einheitField5,
                 einheitField6, einheitField7, einheitField8, einheitField9, einheitField10,
@@ -85,7 +86,7 @@ public class NewPageController {
                 einheitField26, einheitField27, einheitField28, einheitField29, einheitField30
         );
     }
-
+    			
     @FXML
     private void close() {
         PageSwitcher.switchTo(Page.FIRST);
@@ -131,6 +132,9 @@ public class NewPageController {
 
     @FXML
     private void show() {
+    	
+    	next.setDisable(true);
+    	
         String sqlGericht = "INSERT INTO gerichte (name, dauer, personenanzahl) VALUES (?, ?, ?)";
         String sqlZutat = "INSERT INTO zutaten (gericht_id, bezeichnung, einheit) VALUES (?, ?, ?)";
 
@@ -172,6 +176,7 @@ public class NewPageController {
                 }
 
                 stmtZutat.executeBatch();
+                next.setDisable(false);
                 System.out.println("Gericht und Zutaten erfolgreich gespeichert.");
                 JOptionPane.showMessageDialog(null, "Erfolgreich Gespeichert");
 

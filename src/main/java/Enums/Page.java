@@ -5,10 +5,9 @@ public enum Page {
 	FIRST("/Layout/FirstPage.fxml"),
 	NEW("/Layout/NewPage.fxml"),
 	EDIT("Layout/EditPage.fxml"),
-	TRY("https://www.test.de/"),
-	VIEW("/Layout/ViewPage.fxml"),
 	PREPARE("/Layout/PreparePage.fxml"),
 	OVERVIEW("/Layout/OverviewPage.fxml"),
+	BEARBEITEN("/Layout/bearbeiten.fxml"),
 	NAME("/Layout/EnterNamePage.fxml");
 	
 	private String filename;

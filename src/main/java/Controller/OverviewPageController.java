@@ -9,6 +9,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.transformation.FilteredList;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,7 +21,7 @@ import javafx.scene.control.TextField;
 import javax.print.DocFlavor.URL;
 
 import Enums.Page;
-
+	
 public class OverviewPageController {
 	
 	
@@ -130,6 +132,7 @@ public class OverviewPageController {
         }
 
         int id = ausgewählt.getId();
+        System.out.println(ausgewählt);
 
         String sqlZutaten = "DELETE FROM zutaten WHERE gericht_id = ?";
         String sqlZubereitung = "DELETE FROM zubereitungsschritte WHERE gericht_id = ?";
@@ -146,6 +149,8 @@ public class OverviewPageController {
             stmtZubereitung.setInt(1, id);
             stmtZubereitung.executeUpdate();
 
+            
+            
             stmtGerichte.setInt(1, id);
             int affectedRows = stmtGerichte.executeUpdate();
 
@@ -167,4 +172,29 @@ public class OverviewPageController {
     private void back() {
     	PageSwitcher.switchTo(Page.FIRST);
     }
+    
+    
+    @FXML
+    private void edit() throws IOException {
+    	Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
+    	
+    	if(ausgewählt == null) {
+    		System.out.println("Es wrude keine Zeile ausgewählt");
+    	}
+    	
+    	int id = ausgewählt.getId();
+    	
+    	System.out.println("Zu bearbeitende ID: " + id);
+    	
+    	PageSwitcher.switch_with_id(Page.BEARBEITEN, id);
+//    	PageSwitcher.switchTo(Page.BEARBEITEN);
+    	
+    		
+    }
+    
+    
+    
+    
+    
+    
     }

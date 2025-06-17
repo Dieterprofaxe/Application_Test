@@ -1,6 +1,9 @@
 package PageSwitching;
 
 
+import java.io.IOException;
+
+import Controller.BearbeitenPageController;
 import Enums.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,4 +30,18 @@ public class PageSwitcher {
 			e.printStackTrace();
 		}
 	}
-}
+	
+	
+	
+	public static void switch_with_id(Page page, int id) throws IOException {
+			 FXMLLoader loader = new FXMLLoader(PageSwitcher.class.getResource(page.getFilename()));
+		        
+		        Parent root = loader.load();
+
+		        // Check which page you're switching to
+		        BearbeitenPageController Page = loader.getController();
+		        Page.page_loader(id);
+		        
+		        // Set the root of the scene
+		        scene.setRoot(root);
+}}
