@@ -4,6 +4,7 @@ package PageSwitching;
 import java.io.IOException;
 
 import Controller.BearbeitenPageController;
+import Controller.StartPageController;
 import Enums.Page;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,14 +35,33 @@ public class PageSwitcher {
 	
 	
 	public static void switch_with_id(Page page, int id) throws IOException {
-			 FXMLLoader loader = new FXMLLoader(PageSwitcher.class.getResource(page.getFilename()));
-		        
-		        Parent root = loader.load();
+	    FXMLLoader loader = new FXMLLoader(PageSwitcher.class.getResource(page.getFilename()));
+	    Parent root = loader.load();
 
-		        // Check which page you're switching to
-		        BearbeitenPageController Page = loader.getController();
-		        Page.page_loader(id);
-		        
-		        // Set the root of the scene
-		        scene.setRoot(root);
-}}
+	    Object controller = loader.getController();
+
+	    if (controller instanceof BearbeitenPageController) {
+	        ((BearbeitenPageController) controller).page_loader(id);
+	    } else {
+	        System.err.println("Warnung: Controller ist nicht vom Typ BearbeitenPageController!");
+	    }
+
+	    scene.setRoot(root);
+	}
+
+	
+	public static void switch_with_id_1(Page page, int id) throws IOException{
+		FXMLLoader loader = new FXMLLoader(PageSwitcher.class.getResource(page.getFilename()));
+		Parent root = loader.load();
+		
+		Object controller = loader.getController();
+		
+		if(controller instanceof StartPageController) {
+			((StartPageController) controller).page_Loader(id);
+		}else {
+			System.err.println("Warnung: Controoler ist nicht vom Typ StartPageController");
+			
+		}
+	}
+	
+}

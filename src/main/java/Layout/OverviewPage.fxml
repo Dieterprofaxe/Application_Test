@@ -38,7 +38,8 @@
                         <Insets right="540.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btn_edit" styleClass="button" text="Bearbeiten" onAction="#edit" />
+            <Button mnemonicParsing="false" text="Gericht Starten"/>
+                <Button fx:id="btn_edit" onAction="#edit" styleClass="button" text="Bearbeiten" />
                 <Button fx:id="btn_delete" onAction="#delete" styleClass="save-button" text="Löschen" />
             </children>
             <VBox.margin>

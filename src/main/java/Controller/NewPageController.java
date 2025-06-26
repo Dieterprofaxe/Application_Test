@@ -178,6 +178,7 @@ public class NewPageController {
                 stmtZutat.executeBatch();
                 next.setDisable(false);
                 System.out.println("Gericht und Zutaten erfolgreich gespeichert.");
+                PageSwitcher.switchTo(Page.PREPARE);
                 JOptionPane.showMessageDialog(null, "Erfolgreich Gespeichert");
 
             } catch (SQLException e) {

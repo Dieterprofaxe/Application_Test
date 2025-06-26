@@ -8,6 +8,7 @@ public enum Page {
 	PREPARE("/Layout/PreparePage.fxml"),
 	OVERVIEW("/Layout/OverviewPage.fxml"),
 	BEARBEITEN("/Layout/bearbeiten.fxml"),
+	START("/Layout/StartPage.fxml"),
 	NAME("/Layout/EnterNamePage.fxml");
 	
 	private String filename;

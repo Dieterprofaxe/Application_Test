@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../Stylesheet/Start.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StartPageController">
+
+    <VBox spacing="30" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+        
+        <Label fx:id="dishNameLabel" styleClass="heading" text="Gericht: Spaghetti Bolognese" />
+
+        <Label styleClass="subheading" text="Schritt-für-Schritt Anleitung" />
+
+        <TextArea fx:id="currentStepText" wrapText="true" editable="false" prefHeight="200" prefWidth="600" />
+        
+        <Label fx:id="stepCounterLabel" text="Schritt 1 von 10" />
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button fx:id="btn_back" text="Zurück" disable="true" />
+            <Button fx:id="btn_next" text="Weiter" />
+        </HBox>
+        
+        <Button fx:id="btn_exit" text="Abbrechen" styleClass="cancel-button" />
+        
+    </VBox>
+
+</AnchorPane>

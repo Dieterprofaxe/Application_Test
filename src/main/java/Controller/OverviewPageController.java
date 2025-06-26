@@ -193,6 +193,35 @@ public class OverviewPageController {
     }
     
     
+    @FXML
+    private void start(int gerichtID) throws IOException{
+    	
+    	int d = 5;
+    	
+    	if(d > 0) {
+    		System.out.println("Es wird direkt gestartet");
+    		
+    	}else {
+    	
+    	
+    	Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
+    	
+    	if(ausgewählt == null) {
+    		System.out.println("Es wurde keine Zeile ausgewählt");
+    	}
+    	
+    	int id = ausgewählt.getId();
+    	
+    	gerichtID = id;
+    	
+    	System.out.println("Zu bearbeitende ID: " + id);
+    	
+    	PageSwitcher.switch_with_id(Page.START, id);
+    	
+    	}
+    }
+    
+    
     
     
     

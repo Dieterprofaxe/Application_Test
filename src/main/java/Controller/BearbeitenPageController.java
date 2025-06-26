@@ -1,121 +1,180 @@
 package Controller;
 
-
-import javafx.fxml.*;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import Enums.Page;
-import PageSwitching.PageSwitcher;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 
-public class BearbeitenPageController {
-	
-	private static final String URL = "jdbc:mysql://localhost:3306/meinedb?useSSL=false&serverTimezone=UTC";
-	private static final String USER = "root";
-	private static final String PASSWORD = "";
-	
-	
-	@FXML
-	private TextField name, durationField, personenField, zutatField1, zutatField2, zutatField3,
-	zutatField4, zutatField5, zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
-	zutatField11, zutatField12, zutatField13, zutatField14, zutatField15, zutatField16, zutatField17,
-	zutatField18, zutatField19, zutatField20, zutatField21, zutatField22, zutatField23, zutatField24,
-	zutatField25, zutatField26, zutatField27, zutatField28, zutatField29, zutatField30,
-	
-	
-	
-	
-	stepField1, stepField2, stepField3, stepField4, stepField5, stepField6, stepField7, stepfield8,
-	stepField9, stepField10, stepField11, stepField12, stepField13, stepField14, stepField15, stepField16,
-	stepField17, stepField18, stepField19, stepField20, stepField21, stepField22, stepField23,
-	stepField24, stepField25, stepField26, stepField27, stepField28, stepField29, stepField30;  
-	
-	
-	
-	
-	
-	@FXML
-	public void BearbeitenPageController(TextField name, TextField durationField, TextField personenField, TextField zutatField1, TextField zutatField2, TextField zutatField3, TextField zutatField4, TextField zutatField5, TextField zutatField6, TextField zutatField7, TextField zutatField8, TextField zutatField9, TextField zutatField10, TextField zutatField11, TextField zutatField12, 
-			TextField zutatField13, TextField zutatField14, TextField zutatField15, TextField zutatField16, TextField zutatField17, TextField zutatField18, TextField zutatField19, TextField zutatField20, TextField zutatField21, TextField zutatField22, TextField zutatField23,
-			TextField zutatField24, TextField zutatField25, TextField zutatField26, TextField zutatField27, TextField zutatField28, TextField zutatField29, TextField zutatField30, TextField stepField1, TextField stepField2, TextField stepField3, TextField stepField4, TextField stepField5, TextField stepField6, TextField stepField7, TextField stepField8, TextField stepField9,
-			TextField stepField10, TextField stepField11, TextField stepField12, TextField stepField13, TextField stepField14, TextField stepField15, TextField stepField16, TextField stepField17, TextField stepField18, TextField stepField19, TextField stepField20, TextField stepField21, TextField stepField22,TextField stepField23, TextField stepField24, 
-			TextField stepField25, TextField stepField26, TextField stepField27, TextField stepField28, TextField stepField29, TextField stepField30) {
-		this.name = name;							this.zutatField11 = zutatField11;		this.zutatField24 = zutatField24;		this.stepField1 = stepField7;		this.stepField1 = stepField20;
-		this.durationField = durationField;			this.zutatField12 = zutatField12;		this.zutatField25 = zutatField25;		this.stepField1 = stepField8;		this.stepField1 = stepField21;
-		this.personenField = personenField;			this.zutatField13 = zutatField13;		this.zutatField26 = zutatField26;		this.stepField1 = stepField9;		this.stepField1 = stepField22;
-		this.zutatField1 = zutatField1;				this.zutatField14 = zutatField14;		this.zutatField27 = zutatField27;		this.stepField1 = stepField10;		this.stepField1 = stepField23;
-		this.zutatField2 = zutatField2;				this.zutatField15 = zutatField15;		this.zutatField28 = zutatField28;		this.stepField1 = stepField11;		this.stepField1 = stepField24;
-		this.zutatField3 = zutatField3;				this.zutatField16 = zutatField16;		this.zutatField29 = zutatField29;		this.stepField1 = stepField12;		this.stepField1 = stepField25;
-		this.zutatField4 = zutatField4;				this.zutatField17 = zutatField17;		this.zutatField30 = zutatField20;		this.stepField1 = stepField13;		this.stepField1 = stepField26;
-		this.zutatField5 = zutatField5;				this.zutatField18 = zutatField18;		this.stepField1 = stepField1;			this.stepField1 = stepField14;		this.stepField1 = stepField27;
-		this.zutatField6 = zutatField6;				this.zutatField19 = zutatField19;		this.stepField2 = stepField2;			this.stepField1 = stepField15;		this.stepField1 = stepField28;
-		this.zutatField7 = zutatField7;				this.zutatField20 = zutatField20;		this.stepField3 = stepField3;			this.stepField1 = stepField16;		this.stepField1 = stepField29;
-		this.zutatField8 = zutatField8;				this.zutatField21 = zutatField21;		this.stepField4 = stepField4;			this.stepField1 = stepField17;		this.stepField1 = stepField30;
-		this.zutatField9 = zutatField9;				this.zutatField22 = zutatField22;		this.stepField5 = stepField5;			this.stepField1 = stepField18;		
-		this.zutatField10 = zutatField10;			this.zutatField23 = zutatField23;		this.stepField6 = stepField6;			this.stepField1 = stepField19;				
-		
-	}
-	
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-	@FXML
-	private void back() {
-		PageSwitcher.switchTo(Page.OVERVIEW);
-	}
+public class BearbeitenPageController implements Initializable {
 
+    @FXML private TextField name;
+    @FXML private TextField durationField;
+    @FXML private TextField personenField;
 
-	@FXML
-	public void page_loader(int id) {
-		
-		String sqlName = "SELECT name FROM gerichte WHERE id = ?";
-		String sqlDauer = "SELECT dauer FROM gerichte WHERE id = ?";
-		String sqlPersonen = "SELECT personenanzahl FROM gerichte WHERE id = ?";
-		String sqlZutatenBezeichnung = "SELECT bezeichnung FROM zutaten WHERE gericht_id = ?";
-		System.out.println(id);
-		
-		try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-		     PreparedStatement pstmt = conn.prepareStatement(sqlName);
-		     PreparedStatement pstmt1 = conn.prepareStatement(sqlDauer);
-			 PreparedStatement pstmt2 = conn.prepareStatement(sqlPersonen);
-			 PreparedStatement pstmt3 = conn.prepareStatement(sqlZutatenBezeichnung);
-			 PreparedStatement pstmt4 = conn.prepareStatement(sqlZutatenBezeichnung)){
-			
-			
-			pstmt.setInt(1, id);
-			pstmt1.setInt(1, id);
-			pstmt2.setInt(1, id);
-			pstmt3.setInt(1, id);
-			
-			
-			try (ResultSet rs = pstmt.executeQuery();
-				ResultSet rs1 = pstmt1.executeQuery(); 
-				ResultSet rs2 = pstmt2.executeQuery();
-				ResultSet rs3 = pstmt3.executeQuery()){
-				if (rs.next()&& rs1.next()&& rs2.next()&& rs3.next()) {
-					String gerichtName = rs.getString("name");
-					int gerichtDauer = rs1.getInt("dauer");
-					int gerichtPersonen = rs2.getInt("personenanzahl");
-					String gerichtBezeichnung = rs3.getString("bezeichnung");
-					name.setText(gerichtName);
-					durationField.setText(String.valueOf(gerichtDauer));
-					personenField.setText(String.valueOf(gerichtPersonen));
-				} else {
-					name.setText("Kein Gericht gefunden");
-					durationField.setText("Kein Gericht gefunden");
-					personenField.setText("Kein Gericht gefunden");
-				
-				}
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			name.setText("Fehler beim Laden aus der Datenbank");
-			durationField.setText("Fehler beim Laden aus der Datenbank");
-			personenField.setText("Fehler beim Laden aus der Datenbank");
-		}
-	}
+    @FXML private TextField[] zutatFields;
+    @FXML private TextField[] einheitFields;
+    @FXML private TextField[] stepFields;
+
+    @FXML private Button btn_cancel;
+    @FXML private Button btn_save;
+
+    // Einzelne Felder für Zutaten und Einheiten (30 Stück)
+    @FXML private TextField zutatField1; @FXML private TextField einheitField1;
+    @FXML private TextField zutatField2; @FXML private TextField einheitField2;
+    @FXML private TextField zutatField3; @FXML private TextField einheitField3;
+    @FXML private TextField zutatField4; @FXML private TextField einheitField4;
+    @FXML private TextField zutatField5; @FXML private TextField einheitField5;
+    @FXML private TextField zutatField6; @FXML private TextField einheitField6;
+    @FXML private TextField zutatField7; @FXML private TextField einheitField7;
+    @FXML private TextField zutatField8; @FXML private TextField einheitField8;
+    @FXML private TextField zutatField9; @FXML private TextField einheitField9;
+    @FXML private TextField zutatField10; @FXML private TextField einheitField10;
+    @FXML private TextField zutatField11; @FXML private TextField einheitField11;
+    @FXML private TextField zutatField12; @FXML private TextField einheitField12;
+    @FXML private TextField zutatField13; @FXML private TextField einheitField13;
+    @FXML private TextField zutatField14; @FXML private TextField einheitField14;
+    @FXML private TextField zutatField15; @FXML private TextField einheitField15;
+    @FXML private TextField zutatField16; @FXML private TextField einheitField16;
+    @FXML private TextField zutatField17; @FXML private TextField einheitField17;
+    @FXML private TextField zutatField18; @FXML private TextField einheitField18;
+    @FXML private TextField zutatField19; @FXML private TextField einheitField19;
+    @FXML private TextField zutatField20; @FXML private TextField einheitField20;
+    @FXML private TextField zutatField21; @FXML private TextField einheitField21;
+    @FXML private TextField zutatField22; @FXML private TextField einheitField22;
+    @FXML private TextField zutatField23; @FXML private TextField einheitField23;
+    @FXML private TextField zutatField24; @FXML private TextField einheitField24;
+    @FXML private TextField zutatField25; @FXML private TextField einheitField25;
+    @FXML private TextField zutatField26; @FXML private TextField einheitField26;
+    @FXML private TextField zutatField27; @FXML private TextField einheitField27;
+    @FXML private TextField zutatField28; @FXML private TextField einheitField28;
+    @FXML private TextField zutatField29; @FXML private TextField einheitField29;
+    @FXML private TextField zutatField30; @FXML private TextField einheitField30;
+
+    // 30 Textfelder für Zubereitungsschritte
+    @FXML private TextField stepField1;
+    @FXML private TextField stepField2;
+    @FXML private TextField stepField3;
+    @FXML private TextField stepField4;
+    @FXML private TextField stepField5;
+    @FXML private TextField stepField6;
+    @FXML private TextField stepField7;
+    @FXML private TextField stepField8;
+    @FXML private TextField stepField9;
+    @FXML private TextField stepField10;
+    @FXML private TextField stepField11;
+    @FXML private TextField stepField12;
+    @FXML private TextField stepField13;
+    @FXML private TextField stepField14;
+    @FXML private TextField stepField15;
+    @FXML private TextField stepField16;
+    @FXML private TextField stepField17;
+    @FXML private TextField stepField18;
+    @FXML private TextField stepField19;
+    @FXML private TextField stepField20;
+    @FXML private TextField stepField21;
+    @FXML private TextField stepField22;
+    @FXML private TextField stepField23;
+    @FXML private TextField stepField24;
+    @FXML private TextField stepField25;
+    @FXML private TextField stepField26;
+    @FXML private TextField stepField27;
+    @FXML private TextField stepField28;
+    @FXML private TextField stepField29;
+    @FXML private TextField stepField30;
+
+    private int gerichtID;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        zutatFields = new TextField[] {
+            zutatField1, zutatField2, zutatField3, zutatField4, zutatField5,
+            zutatField6, zutatField7, zutatField8, zutatField9, zutatField10,
+            zutatField11, zutatField12, zutatField13, zutatField14, zutatField15,
+            zutatField16, zutatField17, zutatField18, zutatField19, zutatField20,
+            zutatField21, zutatField22, zutatField23, zutatField24, zutatField25,
+            zutatField26, zutatField27, zutatField28, zutatField29, zutatField30
+        };
+
+        einheitFields = new TextField[] {
+            einheitField1, einheitField2, einheitField3, einheitField4, einheitField5,
+            einheitField6, einheitField7, einheitField8, einheitField9, einheitField10,
+            einheitField11, einheitField12, einheitField13, einheitField14, einheitField15,
+            einheitField16, einheitField17, einheitField18, einheitField19, einheitField20,
+            einheitField21, einheitField22, einheitField23, einheitField24, einheitField25,
+            einheitField26, einheitField27, einheitField28, einheitField29, einheitField30
+        };
+
+        stepFields = new TextField[] {
+            stepField1, stepField2, stepField3, stepField4, stepField5,
+            stepField6, stepField7, stepField8, stepField9, stepField10,
+            stepField11, stepField12, stepField13, stepField14, stepField15,
+            stepField16, stepField17, stepField18, stepField19, stepField20,
+            stepField21, stepField22, stepField23, stepField24, stepField25,
+            stepField26, stepField27, stepField28, stepField29, stepField30
+        };
+    }
+
+    public void page_loader(int gerichtID) {
+        this.gerichtID = gerichtID;
+        try (Connection conn = DBConnection.getConnection()) {
+            ladeGericht(conn);
+            ladeZutaten(conn);
+            ladeZubereitung(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ladeGericht(Connection conn) throws SQLException {
+        String sql = "SELECT name, dauer, personenanzahl FROM gerichte WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, gerichtID);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                name.setText(rs.getString("name"));
+                durationField.setText(String.valueOf(rs.getInt("dauer")));
+                personenField.setText(String.valueOf(rs.getInt("personenanzahl")));
+            }
+        }
+    }
+
+    private void ladeZutaten(Connection conn) throws SQLException {
+        String sql = "SELECT bezeichnung, einheit FROM zutaten WHERE gericht_id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, gerichtID);
+            ResultSet rs = pstmt.executeQuery();
+            int index = 0;
+            while (rs.next() && index < zutatFields.length) {
+                zutatFields[index].setText(rs.getString("bezeichnung"));
+                einheitFields[index].setText(rs.getString("einheit"));
+                index++;
+            }
+        }
+    }
+
+    private void ladeZubereitung(Connection conn) throws SQLException {
+        String sql = "SELECT beschreibung FROM zubereitungsschritte WHERE gericht_id = ? ORDER BY schritt_nr ASC";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, gerichtID);
+            ResultSet rs = pstmt.executeQuery();
+            int index = 0;
+            while (rs.next() && index < stepFields.length) {
+                stepFields[index].setText(rs.getString("beschreibung"));
+                index++;
+            }
+        }
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
 }

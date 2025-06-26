@@ -1,0 +1,55 @@
+.kochmodus-root {
+    -fx-background-color: #ffffff;
+}
+
+.heading {
+    -fx-font-size: 28px;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+.subheading {
+    -fx-font-size: 18px;
+    -fx-text-fill: #555555;
+}
+
+#currentStepText {
+    -fx-font-size: 18px;
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px;
+}
+
+#stepCounterLabel {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Buttons für Kochmodus */
+#btn_back,
+#btn_next {
+    -fx-font-size: 16px;
+    -fx-padding: 10 25 10 25;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+#btn_back:disabled {
+    -fx-background-color: #bdc3c7;
+}
+
+#btn_next:hover,
+#btn_back:hover {
+    -fx-opacity: 0.9;
+}
+
+#btn_exit {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 20 8 20;
+}

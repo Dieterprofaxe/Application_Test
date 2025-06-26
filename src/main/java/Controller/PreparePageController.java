@@ -15,11 +15,8 @@ import java.util.List;
 
 public class PreparePageController {
 	
-	@FXML
     private static final String URL = "jdbc:mysql://localhost:3306/meinedb?useSSL=false&serverTimezone=UTC";
-    @FXML
 	private static final String USER = "root";
-    @FXML
     private static final String PASSWORD = "";
 
     @FXML
@@ -55,6 +52,7 @@ public class PreparePageController {
              @Override
              public void handle(ActionEvent event) {
                  System.out.println("Button wurde geklickt!");
+                 insert();
                  btn_last.setDisable(false);
              }
          });
@@ -84,14 +82,8 @@ public class PreparePageController {
     }
 
     
-    
-    
-    
-    
-    
-    
     @FXML
-    private void insert() {
+    private void insert(){
         String insertSql = "INSERT INTO zubereitungsschritte (gericht_id, schritt_nr, beschreibung) VALUES (?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
