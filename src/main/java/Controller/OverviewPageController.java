@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.scene.control.TextField;
 import javax.print.DocFlavor.URL;
+import javax.swing.JOptionPane;
 
 import Enums.Page;
 	
@@ -156,6 +157,7 @@ public class OverviewPageController {
 
             if (affectedRows > 0) {
                 System.out.println("Gericht erfolgreich gelöscht.");
+                JOptionPane.showMessageDialog(null, "Eintrag erfolgreich gelöscht!", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
                 loadGerichte();
             } else {
                 System.out.println("Kein Gericht mit dieser ID gefunden.");

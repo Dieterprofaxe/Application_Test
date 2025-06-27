@@ -13,6 +13,8 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class PreparePageController {
 	
     private static final String URL = "jdbc:mysql://localhost:3306/meinedb?useSSL=false&serverTimezone=UTC";
@@ -100,6 +102,7 @@ public class PreparePageController {
             }
             stmt.executeBatch();
             System.out.println("Zubereitungsschritte erfolgreich gespeichert.");
+            JOptionPane.showMessageDialog(null, "Rezept wurde erfolgreich angelegt!", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
             PageSwitcher.switchTo(Page.FIRST); 
 
 
