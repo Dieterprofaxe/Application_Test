@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import Enums.Page;
+import PageSwitching.PageSwitcher;
+
 public class BearbeitenPageController implements Initializable {
 
     @FXML private TextField name;
@@ -176,8 +179,7 @@ public class BearbeitenPageController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        PageSwitcher.switchTo(Page.OVERVIEW);
     }
     
    
