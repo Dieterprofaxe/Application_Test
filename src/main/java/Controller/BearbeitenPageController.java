@@ -12,6 +12,8 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 public class BearbeitenPageController implements Initializable {
 
     @FXML private TextField name;
@@ -177,4 +179,78 @@ public class BearbeitenPageController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+    
+   
+
+    	@FXML
+    	private void save(ActionEvent event) {
+    	    try (Connection conn = DBConnection.getConnection()) {
+    	        updateGericht(conn);
+    	        updateZutaten(conn);
+    	        updateZubereitung(conn);
+    	        JOptionPane.showMessageDialog(null, "Erfolgreich gespeichert!", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
+    	    } catch (SQLException e) {
+    	        e.printStackTrace();
+    	    }
+    	}
+    	
+    	private void updateGericht(Connection conn) throws SQLException {
+    	    String sql = "UPDATE gerichte SET name = ?, dauer = ?, personenanzahl = ? WHERE id = ?";
+    	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    	        pstmt.setString(1, name.getText());
+    	        pstmt.setInt(2, Integer.parseInt(durationField.getText()));
+    	        pstmt.setInt(3, Integer.parseInt(personenField.getText()));
+    	        pstmt.setInt(4, gerichtID);
+    	        pstmt.executeUpdate();
+    	    }
+    	}
+    	@FXML
+    	private void updateZutaten(Connection conn) throws SQLException {
+    	    
+    	    String deleteSql = "DELETE FROM zutaten WHERE gericht_id = ?";
+    	    try (PreparedStatement deleteStmt = conn.prepareStatement(deleteSql)) {
+    	        deleteStmt.setInt(1, gerichtID);
+    	        deleteStmt.executeUpdate();
+    	    }
+
+    	    
+    	    String insertSql = "INSERT INTO zutaten (gericht_id, bezeichnung, einheit) VALUES (?, ?, ?)";
+    	    try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
+    	        for (int i = 0; i < zutatFields.length; i++) {
+    	            String zutat = zutatFields[i].getText();
+    	            String einheit = einheitFields[i].getText();
+    	            if (zutat != null && !zutat.isEmpty()) {
+    	                insertStmt.setInt(1, gerichtID);
+    	                insertStmt.setString(2, zutat);
+    	                insertStmt.setString(3, einheit);
+    	                insertStmt.addBatch();
+    	            }
+    	        }
+    	        insertStmt.executeBatch();
+    	    }
+    	}
+    	@FXML
+    	private void updateZubereitung(Connection conn) throws SQLException {
+    	    String deleteSql = "DELETE FROM zubereitungsschritte WHERE gericht_id = ?";
+    	    try (PreparedStatement deleteStmt = conn.prepareStatement(deleteSql)) {
+    	        deleteStmt.setInt(1, gerichtID);
+    	        deleteStmt.executeUpdate();
+    	    }
+
+    	    
+    	    String insertSql = "INSERT INTO zubereitungsschritte (gericht_id, schritt_nr, beschreibung) VALUES (?, ?, ?)";
+    	    try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
+    	        for (int i = 0; i < stepFields.length; i++) {
+    	            String schritt = stepFields[i].getText();
+    	            if (schritt != null && !schritt.isEmpty()) {
+    	                insertStmt.setInt(1, gerichtID);
+    	                insertStmt.setInt(2, i + 1);
+    	                insertStmt.setString(3, schritt);
+    	                insertStmt.addBatch();
+    	            }
+    	        }
+    	        insertStmt.executeBatch();
+    	    }
+    	}
+    
 }
