@@ -9,7 +9,7 @@
 }
 
 .back-button {
-    -fx-background-color: #d9534f; /* Bootstrap-artiges Rot */
+    -fx-background-color: #d9534f; 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 5;
@@ -21,7 +21,7 @@
 }
 
 .edit-button {
-    -fx-background-color: #5bc0de; /* Hellblau (kann angepasst werden) */
+    -fx-background-color: #5bc0de; 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 5;
@@ -33,7 +33,7 @@
 }
 
 .save-button {
-    -fx-background-color: #5cb85c; /* Grün (kann angepasst werden) */
+    -fx-background-color: #5cb85c; 
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 5;

@@ -1,6 +1,8 @@
 package Enums;
 
 public enum Page {
+	//Hier wird einfach nur der PFad zu den einzelnen Seiten angegeben damit man aus anderen KLassen die Seiten Starten oder wechseln kann
+	
 	MAIN("/Layout/MainPage.fxml"),
 	FIRST("/Layout/FirstPage.fxml"),
 	NEW("/Layout/NewPage.fxml"),

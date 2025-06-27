@@ -21,6 +21,9 @@ public class PreparePageController {
 	private static final String USER = "root";
     private static final String PASSWORD = "";
 
+    
+  //Die verschiedenen Objekte werden initializiert
+    
     @FXML
     private Button btn_last, btn_save; 
     
@@ -73,6 +76,9 @@ public class PreparePageController {
     
     }
 
+    
+    //Wieder nur die Seitenwechsel
+    
     @FXML
     private void close() {
         PageSwitcher.switchTo(Page.NEW);
@@ -83,7 +89,7 @@ public class PreparePageController {
         PageSwitcher.switchTo(Page.FIRST);
     }
 
-    
+    //Hier werden die Zubereitungsschritte gespeichert
     @FXML
     private void insert(){
         String insertSql = "INSERT INTO zubereitungsschritte (gericht_id, schritt_nr, beschreibung) VALUES (?, ?, ?)";

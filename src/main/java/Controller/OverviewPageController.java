@@ -30,6 +30,8 @@ public class OverviewPageController {
 	private static final String USER = "root";
 	private static final String PASSWORD ="";
 
+	//Die verschiedenen Objekte werden initializiert
+	
     @FXML
     private TableView<Gericht> gerichtTable;
 
@@ -48,6 +50,9 @@ public class OverviewPageController {
     private ObservableList<Gericht> gerichte = FXCollections.observableArrayList();
     private FilteredList<Gericht> filteredGerichte;
 
+    
+    //Verbindung zur Datenbank wird erstellt die Daten aus der Datenbank werden angezeigt
+    
     @FXML
     private void view() {
         try {
@@ -68,12 +73,14 @@ public class OverviewPageController {
         }
     }
 
+    //Das ist die Suchfunktion
+    
     @FXML
     private void initialize() {
     	
     	searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredGerichte.setPredicate(gericht -> {
-                // Wenn Suchfeld leer -> alles anzeigen
+                
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -95,17 +102,12 @@ public class OverviewPageController {
     
    
     
-    
-    
-    
     @FXML
     private void loadGerichte() {
-    	gerichte.clear(); // Wichtig: Liste leeren, sonst doppelt geladen
-
+    	gerichte.clear(); 
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT id, name, dauer, personenanzahl FROM gerichte")) {
-
             while (rs.next()) {
                 gerichte.add(new Gericht(
                     rs.getInt("id"),
@@ -117,17 +119,17 @@ public class OverviewPageController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         filteredGerichte = new FilteredList<>(gerichte, p -> true);
         gerichtTable.setItems(filteredGerichte);
     }
     
     
-    
+    //Das Gericht welches ausgewählt ist wird gelöscht mit dne folgenden SQL-Befehlen
     @FXML
     private void delete() {
         Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
         if (ausgewählt == null) {
+        	JOptionPane.showMessageDialog(null, "Wählen sie eine Zeile aus!", "ERROR", JOptionPane.ERROR_MESSAGE);
             System.out.println("Keine Zeile ausgewählt.");
             return;
         }
@@ -181,6 +183,7 @@ public class OverviewPageController {
     	Gericht ausgewählt = gerichtTable.getSelectionModel().getSelectedItem();
     	
     	if(ausgewählt == null) {
+    		JOptionPane.showMessageDialog(null, "Wählen sie eine Zeile aus!", "ERROR", JOptionPane.ERROR_MESSAGE);
     		System.out.println("Es wrude keine Zeile ausgewählt");
     	}
     	
@@ -194,7 +197,7 @@ public class OverviewPageController {
     		
     }
     
-    
+    //Hat keine Auswirkung fürs Programm. Wird verwendet falls ich das Programm mal erweitern möchte 
     @FXML
     private void start(int gerichtID) throws IOException{
     	

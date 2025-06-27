@@ -3,7 +3,7 @@
     -fx-background-color: #f9f9f9;
 }
 
-/* Labels */
+
 .label {
     -fx-font-size: 15px;
     -fx-text-fill: #333333;
@@ -15,7 +15,7 @@
     -fx-text-fill: #2c3e50;
 }
 
-/* Eingabefelder */
+
 .text-field,
 .text-area,
 .combo-box {
@@ -35,7 +35,7 @@
     -fx-focus-color: #2ecc71;
 }
 
-/* TableView Styling */
+
 .table-view {
     -fx-background-color: #ffffff;
     -fx-border-color: #cccccc;
@@ -54,7 +54,7 @@
     -fx-text-fill: white;
 }
 
-/* Buttons */
+
 .button {
     -fx-font-size: 14px;
     -fx-padding: 8 20 8 20;
@@ -76,7 +76,7 @@
     -fx-opacity: 0.85;
 }
 
-/* Kleine Icon-Buttons (+/-) */
+
 .icon-button {
     -fx-font-size: 16px;
     -fx-padding: 5 10;
@@ -84,7 +84,7 @@
     -fx-border-radius: 5;
 }
 
-/* Scrollbar Styling */
+
 .text-area .scroll-bar:vertical {
     -fx-pref-width: 8px;
     -fx-background-color: transparent;

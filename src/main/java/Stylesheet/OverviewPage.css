@@ -14,7 +14,6 @@
     -fx-text-fill: #2c3e50;
 }
 
-/* Einheitliches Styling für Eingabefelder */
 .text-field,
 .text-area,
 .combo-box {
@@ -26,7 +25,7 @@
     -fx-font-size: 14px;
 }
 
-/* Extra für TextArea – für Konsistenz */
+
 .text-area {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-wrap-text: true;
@@ -35,7 +34,7 @@
     -fx-focus-color: #2ecc71;
 }
 
-/* TableView Styling */
+
 .table-view {
     -fx-background-color: #ffffff;
     -fx-border-color: #cccccc;
@@ -54,7 +53,7 @@
     -fx-text-fill: white;
 }
 
-/* Buttons */
+
 .button {
     -fx-font-size: 14px;
     -fx-padding: 8 20 8 20;
@@ -62,13 +61,13 @@
     -fx-background-radius: 5px;
 }
 
-/* Speichern-Button */
+
 .save-button {
     -fx-background-color: #2ecc71;
     -fx-text-fill: white;
 }
 
-/* Abbrechen-Button */
+
 .cancel-button {
     -fx-background-color: #e74c3c;
     -fx-text-fill: white;
@@ -78,7 +77,7 @@
     -fx-opacity: 0.85;
 }
 
-/* Kleine Icon-Buttons (+/-) */
+
 .icon-button {
     -fx-font-size: 16px;
     -fx-padding: 5 10;
@@ -86,7 +85,7 @@
     -fx-border-radius: 5;
 }
 
-/* Optional: Scrollbar verfeinern */
+
 .text-area .scroll-bar:vertical {
     -fx-pref-width: 8px;
     -fx-background-color: transparent;

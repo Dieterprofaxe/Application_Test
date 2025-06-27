@@ -30,7 +30,7 @@ public class BearbeitenPageController implements Initializable {
     @FXML private Button btn_cancel;
     @FXML private Button btn_save;
 
-    // Einzelne Felder für Zutaten und Einheiten (30 Stück)
+    // Hier habe ich alle Felder von der FXML hinzugefügt
     @FXML private TextField zutatField1; @FXML private TextField einheitField1;
     @FXML private TextField zutatField2; @FXML private TextField einheitField2;
     @FXML private TextField zutatField3; @FXML private TextField einheitField3;
@@ -62,7 +62,7 @@ public class BearbeitenPageController implements Initializable {
     @FXML private TextField zutatField29; @FXML private TextField einheitField29;
     @FXML private TextField zutatField30; @FXML private TextField einheitField30;
 
-    // 30 Textfelder für Zubereitungsschritte
+    // Das gleiche mit den Zubereitungsschritten
     @FXML private TextField stepField1;
     @FXML private TextField stepField2;
     @FXML private TextField stepField3;
@@ -125,7 +125,9 @@ public class BearbeitenPageController implements Initializable {
             stepField26, stepField27, stepField28, stepField29, stepField30
         };
     }
-
+    
+    
+    //Das Object gerichtID wurde übergeben und die Verbindung zur Datenbank wurde aufgebaut
     public void page_loader(int gerichtID) {
         this.gerichtID = gerichtID;
         try (Connection conn = DBConnection.getConnection()) {
@@ -136,7 +138,10 @@ public class BearbeitenPageController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    
+    
+    
+    //SQL-Select wurde erstellt und auch ausgeführt
     private void ladeGericht(Connection conn) throws SQLException {
         String sql = "SELECT name, dauer, personenanzahl FROM gerichte WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -149,7 +154,10 @@ public class BearbeitenPageController implements Initializable {
             }
         }
     }
-
+    
+    
+    
+    //Hier wieder das gleiche
     private void ladeZutaten(Connection conn) throws SQLException {
         String sql = "SELECT bezeichnung, einheit FROM zutaten WHERE gericht_id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -163,7 +171,10 @@ public class BearbeitenPageController implements Initializable {
             }
         }
     }
-
+    
+    
+    
+    //Hier auch wieder das gleiche
     private void ladeZubereitung(Connection conn) throws SQLException {
         String sql = "SELECT beschreibung FROM zubereitungsschritte WHERE gericht_id = ? ORDER BY schritt_nr ASC";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -176,7 +187,10 @@ public class BearbeitenPageController implements Initializable {
             }
         }
     }
-
+    
+    
+    
+    //Seitenwechsel wenn der Button Abbrechen gedrückt wird
     @FXML
     private void back(ActionEvent event) {
         PageSwitcher.switchTo(Page.OVERVIEW);
@@ -184,6 +198,8 @@ public class BearbeitenPageController implements Initializable {
     
    
 
+    
+    	//Datenbankverbindung wird wieder aufgebaut und die 3 SQL-Befehle werden ausgeführt
     	@FXML
     	private void save(ActionEvent event) {
     	    try (Connection conn = DBConnection.getConnection()) {
@@ -196,6 +212,9 @@ public class BearbeitenPageController implements Initializable {
     	    }
     	}
     	
+    	
+    	
+    	
     	private void updateGericht(Connection conn) throws SQLException {
     	    String sql = "UPDATE gerichte SET name = ?, dauer = ?, personenanzahl = ? WHERE id = ?";
     	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -206,6 +225,9 @@ public class BearbeitenPageController implements Initializable {
     	        pstmt.executeUpdate();
     	    }
     	}
+    	
+    	
+    	
     	@FXML
     	private void updateZutaten(Connection conn) throws SQLException {
     	    
@@ -231,6 +253,9 @@ public class BearbeitenPageController implements Initializable {
     	        insertStmt.executeBatch();
     	    }
     	}
+    	
+    	
+    	
     	@FXML
     	private void updateZubereitung(Connection conn) throws SQLException {
     	    String deleteSql = "DELETE FROM zubereitungsschritte WHERE gericht_id = ?";

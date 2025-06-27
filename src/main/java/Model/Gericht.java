@@ -7,6 +7,9 @@ public class Gericht {
 	private int personenanzahl;
 	
 	
+	//Getter und Setter für ID, Name, Dauer und Personenanzahl
+	
+	
 	public Gericht(int id, String name, int dauer, int personenanzahl) {
 		this.id = id;
 		this.name = name;

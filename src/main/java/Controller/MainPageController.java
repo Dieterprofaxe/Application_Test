@@ -16,6 +16,8 @@ import javafx.scene.control.PasswordField;
 
 public class MainPageController extends Application {
 	
+	//Die verschiedenen Objekte werden initializiert
+	
 	@FXML
 	private Button btn_loe, btn_enter, btn_close;
 	
@@ -26,6 +28,8 @@ public class MainPageController extends Application {
 	private PasswordField txt_pass;
 	
 	
+	//Hier werden die verschiedene Benutzer festgelegt
+	
 	private final String user1 = "admin";
     private final String pass1 = "1234";
 
@@ -35,7 +39,7 @@ public class MainPageController extends Application {
     private final String user3 = "guest";
     private final String pass3 = "1234";
 	
-	
+	//Löscht den Inhalt der Anmeldefelder sobald es ausgelöst wird
 	
 	@FXML
 	public void delet() {
@@ -44,10 +48,14 @@ public class MainPageController extends Application {
 		
 	}
 	
+	//Schließt das Programm
+	
 	@FXML
 	public void close() {
 		System.exit(0);
 	}
+	
+	//Vergleicht die Werte der Textfelder mit den der angegeben
 	
 	@FXML
     public void check_user() {
@@ -71,12 +79,14 @@ public class MainPageController extends Application {
         }
 	}
 
-	
-
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+
+
 
 }

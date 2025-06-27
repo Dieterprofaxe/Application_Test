@@ -20,10 +20,16 @@ import Helper.GerichtHolder;
 import PageSwitching.PageSwitcher;
 
 public class NewPageController {
+	
+	//Verbindungsdaten zur Datenbank
+	
     private static final String URL = "jdbc:mysql://localhost:3306/meinedb?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
+    
+    //Die verschiedenen Objekte werden initializiert
+    
     @FXML
     private Button cancelButton, saveButton, next;
 
@@ -63,7 +69,7 @@ public class NewPageController {
         personenField.textProperty().addListener((observable, oldValue, newValue) -> checkFields());
  
     	
-    	
+    	//Array Listen werden erstellt
 	
         personenField.setText("1");
         		
@@ -86,7 +92,10 @@ public class NewPageController {
                 einheitField26, einheitField27, einheitField28, einheitField29, einheitField30
         );
     }
-    			
+    		
+    
+    //Wieder nur Seitenwechsel
+    
     @FXML
     private void close() {
         PageSwitcher.switchTo(Page.FIRST);
@@ -97,7 +106,7 @@ public class NewPageController {
         PageSwitcher.switchTo(Page.PREPARE);
     }
     
-    
+    //Der Button saveButton ist nur verfügbar wenn in den folgenden textfeldern der Richtige Datentyp steht
     
     @FXML
     private void checkFields() {
@@ -129,6 +138,8 @@ public class NewPageController {
         }
     }
 
+    
+    //Hier werden die Datenbanken dann gefüllt
 
     @FXML
     private void show() {

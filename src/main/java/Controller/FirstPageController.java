@@ -18,6 +18,8 @@ import javafx.scene.control.PasswordField;
 
 public class FirstPageController {
 	
+	//Die verschiedenen Objekte werden initializiert
+	
 	@FXML
 	private Button btn_close, btn_logOut, hiddenButton;
 	
@@ -25,7 +27,7 @@ public class FirstPageController {
 	private VBox vbox_second;
 	
 	
-	
+	//Hier sind nur die verschiedene  Optionen von den Seitenwechseln
 	
 	@FXML
 	private void logOut() {

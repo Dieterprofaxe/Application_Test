@@ -16,6 +16,9 @@ public class PageSwitcher {
 		PageSwitcher.scene = scene;
 	}
 	
+	
+	//Er ist für den Seitenwechsel zuständig
+	
 	public static void switchTo(Page page) {
 		if(scene == null) {
 			System.out.println("No Page set");
@@ -32,7 +35,7 @@ public class PageSwitcher {
 		}
 	}
 	
-	
+	//Ist für den Seitenwechsel zuständig bei dem auch ein Paramter mitgegeben wird
 	
 	public static void switch_with_id(Page page, int id) throws IOException {
 	    FXMLLoader loader = new FXMLLoader(PageSwitcher.class.getResource(page.getFilename()));

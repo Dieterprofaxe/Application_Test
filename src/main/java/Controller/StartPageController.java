@@ -13,6 +13,12 @@ import java.util.ResourceBundle;
 
 public class StartPageController  {
 
+	
+	//Diese Seite wird Aktuell noch nicht verwendet. Falls ich das Programm mal erweitern soll dieser Controller die Verschiedenen Zubereitungsschritte anzeigen
+	//und die eine Koch Anleitung dienen.
+	
+	
+	
 	private int gerichtID;
 	
    public void page_loader(int gerichtID) {
