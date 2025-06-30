@@ -151,7 +151,7 @@ public class OverviewPageController {
 
             stmtZubereitung.setInt(1, id);
             stmtZubereitung.executeUpdate();
-
+            
             
             
             stmtGerichte.setInt(1, id);
@@ -175,6 +175,11 @@ public class OverviewPageController {
     @FXML
     private void back() {
     	PageSwitcher.switchTo(Page.FIRST);
+    }
+    
+    @FXML
+    private void error() {
+    	PageSwitcher.switchTo(Page.ERROR);
     }
     
     

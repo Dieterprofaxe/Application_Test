@@ -11,6 +11,7 @@ public enum Page {
 	OVERVIEW("/Layout/OverviewPage.fxml"),
 	BEARBEITEN("/Layout/bearbeiten.fxml"),
 	START("/Layout/StartPage.fxml"),
+	ERROR("/Layout/ErrorPage.fxml"),
 	NAME("/Layout/EnterNamePage.fxml");
 	
 	private String filename;
