@@ -1,6 +1,8 @@
 JavaFX-Anwendung Rezeptbuch.
 
 Da die JavaFX-Anwendung zu groß ist um sie hier hochzuladen sende ich ihnen eine GoogleDrive link wo sie die Datein herunterladen können.
+https://drive.google.com/drive/folders/1PaKWxlsoaF4L_IA4ClC4nXjGL581woZq?usp=drive_link
+
 Sie müssen den Ordner Main herunterladen. Diesen sehen sie dann unter für mich freigegeben.
 
 Wenn sie unser Programm starten möchten müssen sie nur in dem Ordner Main die Anwendung Main_Application.exe starten. 
