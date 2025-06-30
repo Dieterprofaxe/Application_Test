@@ -1,6 +1,8 @@
 JavaFX-Anwendung Rezeptbuch.
 
-Wenn sie unser Programm starten möchten müssen sie nur in dem Ordner Programm die Anwendung Test starten. 
+Da die JavaFX-Anwendung zu groß ist um sie hier hochzuladen sende ich ihnen eine OneDrive link wo sie die Datein herunterladen können
+
+Wenn sie unser Programm starten möchten müssen sie nur in dem Ordner Main die Anwendung Main_Application starten. 
 Das Starten von unserem Programm kann kurz dauern.
 
 Als Anmeldedaten haben wir verschiedene. 
