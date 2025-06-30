@@ -14,6 +14,6 @@ Als Anmeldedaten haben wir verschiedene.
 
 Damit das Programm  richtig funktioniert müssen sie XAMPP auf ihrem PC  starten. 
 In Xampp starten sie dann Apache und SQL. 
-Im Web Interface müssen sie eine Datenbank erstellen Namens meinedb und dieser Datenbank die drei Tabellen "zutaten.sql" "zubereitungsschritte.sql" und "gerichte.sql" importieren. Der User von XAMPP muss root sein und das Password leer.
+Im Web Interface müssen sie eine Datenbank erstellen Namens meinedb und dieser Datenbank die drei Tabellen "zutaten.sql" "zubereitungsschritte.sql" und "gerichte.sql" die sich in dem Ordner Tabellen befinden importieren. Der User von XAMPP muss root sein und das Password leer.
 
 Falls es nicht funktioniert können wir ihnen das Programm am Donnerstag auf unserem Laptop zeigen
